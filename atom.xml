@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>加肥猫的学习博客</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://helloliuxinjie.github.io/myblog.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://helloliuxinjie.github.io/myblog.github.io/"/>
   <updated>2021-03-20T07:17:53.786Z</updated>
-  <id>http://example.com/</id>
+  <id>https://helloliuxinjie.github.io/myblog.github.io/</id>
   
   <author>
     <name>加菲猫的薛定谔@LXJ</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2021/03/20/VAE/"/>
-    <id>http://example.com/2021/03/20/VAE/</id>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/20/VAE/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/20/VAE/</id>
     <published>2021-03-20T07:17:29.828Z</published>
     <updated>2021-03-20T07:17:53.786Z</updated>
     
@@ -38,8 +38,8 @@
   
   <entry>
     <title>深度学习和机器学习</title>
-    <link href="http://example.com/2021/03/20/pytorch/"/>
-    <id>http://example.com/2021/03/20/pytorch/</id>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/20/pytorch/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/20/pytorch/</id>
     <published>2021-03-20T07:13:40.399Z</published>
     <updated>2021-03-20T07:17:11.597Z</updated>
     
@@ -58,8 +58,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2021/03/19/hello-world/"/>
-    <id>http://example.com/2021/03/19/hello-world/</id>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/19/hello-world/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/19/hello-world/</id>
     <published>2021-03-19T15:51:36.068Z</published>
     <updated>2021-03-19T15:51:36.068Z</updated>
     
@@ -78,8 +78,8 @@
   
   <entry>
     <title>Hello,LXJ!</title>
-    <link href="http://example.com/2021/03/18/Hello-LXJ/"/>
-    <id>http://example.com/2021/03/18/Hello-LXJ/</id>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/Hello-LXJ/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/Hello-LXJ/</id>
     <published>2021-03-17T16:02:38.000Z</published>
     <updated>2021-03-20T06:30:09.727Z</updated>
     
