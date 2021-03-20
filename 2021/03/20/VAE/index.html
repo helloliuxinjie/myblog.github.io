@@ -21,7 +21,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"helloliuxinjie.github.io","root":"/myblog.github.io/","images":"/myblog.github.io/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+    var CONFIG = {"hostname":"helloliuxinjie.github.io","root":"/myblog.github.io/","images":"/myblog.github.io/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/myblog.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="基于VAE的Mnist手写体图像生成笔记1.判别模型与生成模型在传统机器学习模型一般分为两类 1.1 判别模型给定数据x, 比如一张图像.  标签y, 比如猫或者狗.   判别模型只在建模给定x后,对标签y的条件概率分布.  根据条件概率大小进行分类. 它可以用于各种分类任务. 判别任务具有更为直接和广泛的应用. 1.2 生成模型通常假设数据x的产生, 服从一个有隐变量z控制的一个隐藏生成过程.">
 <meta property="og:type" content="article">
@@ -119,6 +119,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -132,11 +133,37 @@
         <li class="menu-item menu-item-tags"><a href="/myblog.github.io/tags/" rel="section"><i class="tags fa-fw"></i>标签<span class="badge">0</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/myblog.github.io/categories/" rel="section"><i class="th fa-fw"></i>分类<span class="badge">0</span></a></li>
         <li class="menu-item menu-item-archives"><a href="/myblog.github.io/archives/" rel="section"><i class="archive fa-fw"></i>归档<span class="badge">3</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
         
@@ -449,6 +476,7 @@
 <script src="/myblog.github.io/js/utils.js"></script><script src="/myblog.github.io/js/motion.js"></script><script src="/myblog.github.io/js/next-boot.js"></script>
 
   
+<script src="/myblog.github.io/js/local-search.js"></script>
 
 
 
