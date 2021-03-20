@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>加肥猫的学习博客</title>
   
-  
+  <subtitle>记录学习和生活中的点点滴滴</subtitle>
   <link href="https://helloliuxinjie.github.io/myblog.github.io/atom.xml" rel="self"/>
   
   <link href="https://helloliuxinjie.github.io/myblog.github.io/"/>
