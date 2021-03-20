@@ -6,7 +6,7 @@
   <link href="https://helloliuxinjie.github.io/myblog.github.io/atom.xml" rel="self"/>
   
   <link href="https://helloliuxinjie.github.io/myblog.github.io/"/>
-  <updated>2021-03-20T07:17:53.786Z</updated>
+  <updated>2021-03-20T08:27:34.810Z</updated>
   <id>https://helloliuxinjie.github.io/myblog.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
+    <title>变分自动编码器</title>
     <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/20/VAE/"/>
     <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/20/VAE/</id>
-    <published>2021-03-20T07:17:29.828Z</published>
-    <updated>2021-03-20T07:17:53.786Z</updated>
+    <published>2021-03-20T08:42:38.000Z</published>
+    <updated>2021-03-20T08:27:34.810Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基于VAE的Mnist手写体图像生成笔记"><a href="#基于VAE的Mnist手写体图像生成笔记" class="headerlink" title="基于VAE的Mnist手写体图像生成笔记"></a>基于VAE的Mnist手写体图像生成笔记</h1><h2 id="1-判别模型与生成模型"><a href="#1-判别模型与生成模型" class="headerlink" title="1.判别模型与生成模型"></a>1.判别模型与生成模型</h2><p>在传统机器学习模型一般分为两类</p><h3 id="1-1-判别模型"><a href="#1-1-判别模型" class="headerlink" title="1.1 判别模型"></a>1.1 判别模型</h3><p>给定数据x, 比如一张图像.  标签y, 比如猫或者狗.   判别模型只在建模给定x后,对标签y的条件概率分布.  根据条件概率大小进行分类. 它可以用于各种分类任务.</p><p>判别任务具有更为直接和广泛的应用.</p><h3 id="1-2-生成模型"><a href="#1-2-生成模型" class="headerlink" title="1.2 生成模型"></a>1.2 生成模型</h3><p>通常假设数据x的产生, 服从一个有隐变量z控制的一个隐藏生成过程.  进而去建模数据x与隐变量z的联合概率分布.  从而根据z的先验分布p(z)–&gt;以及给定z后x的生成分布p(x|z), 对x进行采样, 生成新的数据样本.</p><p>生成模型更具趣味性, 因为他可以生成之前并不存在的样本. 它可以揭示数据背后的隐藏结构,从而展现机器的一个想象力, 拓宽人类的视野.</p><h2 id="2-基于深度学习的生成模型"><a href="#2-基于深度学习的生成模型" class="headerlink" title="2. 基于深度学习的生成模型"></a>2. 基于深度学习的生成模型</h2><p>随着深度学习的发展, 深度生成模型成为了当下的热点. 如今主流的生成模型主要分为两类: 生成对抗网络(GAN)和变分自编码器(VAE)</p><h3 id="2-1-生成对抗网络-GAN"><a href="#2-1-生成对抗网络-GAN" class="headerlink" title="2.1 生成对抗网络(GAN)"></a>2.1 生成对抗网络(GAN)</h3><p>生成网络与判别网络最小-最大化博弈, 从而在迭代的过程中, 生成网络可以骗过判别网络, 生成高质量的原始数据.   由于GAN基于博弈论的数学原理极为有趣, 它吸引了大量的研究.  由于它只能从隐变量的先验分布p(z)中随机采样生成新样本.  而不能表达给定x之后, 隐变量z的后验概率分布, 因此在应用中具有局限性.</p><h3 id="2-2-变分自编码器-VAE"><a href="#2-2-变分自编码器-VAE" class="headerlink" title="2.2 变分自编码器(VAE)"></a>2.2 变分自编码器(VAE)</h3><p>利用解码网络自下而上建模生成过程, 也就是给定z后, x的条件概率分布p(x|z)</p><p>利用编码网络自下而上的推理过程, 即给定x后的, z的后验概率</p><p>因此VAE的语义空间具有更加明显的语义结构, 它同时具有生成和推理的过程.  因此VAE在多项任务,比如说计算机视觉, 自然语言处理, 推荐系统方面具有广泛的应用.</p><h2 id="3-变分自编码器-VAE"><a href="#3-变分自编码器-VAE" class="headerlink" title="3.变分自编码器(VAE)"></a>3.变分自编码器(VAE)</h2><h3 id="3-1-生成过程-给定某一个z-利用其生成数据x"><a href="#3-1-生成过程-给定某一个z-利用其生成数据x" class="headerlink" title="3.1 生成过程(给定某一个z, 利用其生成数据x)"></a>3.1 生成过程(给定某一个z, 利用其生成数据x)</h3><p>假设隐变量z的先验p(z), 在没有给定任何数据的时候, 服从一个标准的正态分布.   现在假定给定z后, x服从条件概率分布p(x|z), 即可以由一个深度神经网络解码器(一个DNN)来表示, 该网络以theta作为其可训练权重, 以z作为输入.          当x是连续的实变量时, 我们可以假设它服从高斯分布, 从而将网络未加任何激活函数的原始输出作为高斯分布的均值.         当x是一个离散变量的时候, 我们可以假设它服从二元或者多元伯努利分布, 这时对网络的输出进行sigmoid或者softmax函数进行归一化, 可以作为该分布对应类别的概率.</p><h3 id="3-2推理过程-即给定某一个x-z的后验概率分布"><a href="#3-2推理过程-即给定某一个x-z的后验概率分布" class="headerlink" title="3.2推理过程(即给定某一个x, z的后验概率分布)"></a>3.2推理过程(即给定某一个x, z的后验概率分布)</h3><p>在给定上述隐变量z的先验概率p(z)以及数据x的生成概率p(x|z)之后, 给定一个样本x,对齐隐变量的推理P(z|x), 需要知道z的后验概率分布p(z|x),  而根据贝叶斯定理, 计算z的后验概率分布需要 x的边缘概率p(x)即归一化常数.    但是p(x)=fp(z)p(x|z)dz中的生成条件概率p(x|z)是由深度神经网络表示的, 是非线性的, 没有显式解, 因此, 该后验概率不可解!</p><h3 id="3-3-变分近似后验"><a href="#3-3-变分近似后验" class="headerlink" title="3.3 变分近似后验"></a>3.3 变分近似后验</h3><p>为了解决上述后验概率不可解的问题.  VAE假设存在一个q(z|x), 这里的权重参数为Ψ, 即编码器网络, 去近似不可解的后验.   VAE旨在从q(Ψ)中找到一个与上面的真实但不可解的后验概率分布p(这里参数为θ)的KL散度最小的一个分布, 作为它的一个近似.</p><h3 id="3-4-优化目标-最小化qΨ-z-x-与pθ-z-x-之间的KL散度"><a href="#3-4-优化目标-最小化qΨ-z-x-与pθ-z-x-之间的KL散度" class="headerlink" title="3.4 优化目标: 最小化qΨ(z|x)与pθ(z|x)之间的KL散度"></a>3.4 优化目标: 最小化qΨ(z|x)与pθ(z|x)之间的KL散度</h3><p>根据式1, 由于x的边缘分布p(x)中不含有隐变量z, 所以它是一个常数, 显然它不可解.    最小化KL散度等价于最大化后面这个式子L即式2, 因为KL散度是大于0的量, 所以L属于边缘分布对数的一个下界</p><p>根据式2即L表达式,  它由两个项组成, 其一是生成x概率的对数似然的期望,对其进行最大化,可以使得z能解释出现的数据x,从而约束隐空间的语义结构       其二是z的先验概率分布p(z)与z的后验概率分布的KL散度, 该项使得后验尽可能的去接近先验, 它作为正则化项控制编码器模型的复杂度.</p><h3 id="3-5-本文使用的网络结构"><a href="#3-5-本文使用的网络结构" class="headerlink" title="3.5 本文使用的网络结构"></a>3.5 本文使用的网络结构</h3><p>x是图像,  因此编码器网络首先采用卷积神经网络对图像进行特征提取, 同时在卷积层之间采用p归一化, 防止发生均值漂移,并且减轻过拟合的影响.  最后我们将后一个卷积层输出的特征图谱展开为一维,经过一个全连接层后, 分别用两个全连接层去预测隐变量的均值和方差.  为了使梯度能够正常的传递,VAE采用了重参数化技巧(即给定隐变量z的均值和标准差,我们首先从标准正态分布采到一个样本 ε,然后z=μ+σ*ε 作为z的样本进行前向传播).        在解码器中, 给定隐变量z的一个样本之后,通过全连接层将它映射到编码器最后一个卷积层输出特征图谱, 展开成为一维后的大小, 并将其reshape, 使其具有对应的空间维度, 接着解码器采用了一个解卷积层, 将特征图谱的空间分辨率提升到原来的大小. 最后解码器采用了以sigmoid为激活函数的卷积层还原得到原始数据x’</p><h1 id="VAE-另一项目"><a href="#VAE-另一项目" class="headerlink" title="VAE 另一项目"></a>VAE 另一项目</h1><p><a href="https://kexue.fm/archives/5253">gitee</a></p><p><a href="https://gitee.com/cao_yu_fei/vae_keras?_from=gitee_search#https://kexue.fm/archives/5253">vae_keras</a></p><h1 id="VAE-基于pytorch的项目"><a href="#VAE-基于pytorch的项目" class="headerlink" title="VAE 基于pytorch的项目"></a>VAE 基于pytorch的项目</h1><p><a href="https://gitee.com/xubinlee/VAE-CVAE-MNIST?_from=gitee_search">VAE-CVAE-MNIST</a></p><p><a href="https://gitee.com/piglittle/multi-level-vae?_from=gitee_search">multi-level-vae</a></p><p><a href="https://gitee.com/asdxyz1234/VAE?_from=gitee_search#https://github.com/AntixK/PyTorch-VAE/blob/master/models/vanilla_vae.py">有比较的全的vae源码</a></p>]]></content>
     
@@ -37,13 +37,13 @@
   </entry>
   
   <entry>
-    <title>深度学习和机器学习</title>
-    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/20/pytorch/"/>
-    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/20/pytorch/</id>
-    <published>2021-03-20T07:13:40.399Z</published>
-    <updated>2021-03-20T07:17:11.597Z</updated>
+    <title>深度学习框架pytorch学习笔记</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/19/pytorch/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/19/pytorch/</id>
+    <published>2021-03-19T13:02:38.000Z</published>
+    <updated>2021-03-20T08:27:12.296Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Pytorch"><a href="#Pytorch" class="headerlink" title="Pytorch"></a>Pytorch</h1><h2 id="p1-人工神经网络与生物神经网络"><a href="#p1-人工神经网络与生物神经网络" class="headerlink" title="p1.人工神经网络与生物神经网络"></a>p1.人工神经网络与生物神经网络</h2><p>1.生物神经网络:数以万计的神经连接, 900亿的神经细胞组成了我们复杂的神经系统</p><p>2.记忆的形成: 生成了新的突触, 记忆就产生了.  但是形成的新连接怎么形成记忆仍然是科学界的一个迷.</p><p>3.人工神经网络: 比如Google的搜索引擎,股票价格预测,集成学习,家庭助手,围棋alphago</p><p>4.已经成体系的人工神经网络, 神经元之间的连接都是固定不可更换的. 也就是说在人工神经网络里没有凭空产生新连接这回事.  它靠的是正向和反向传播来更新神经元, 从而形成一个更好的神经系统. 本质上这是一个可以处理优化的数学模型. 而生物神经网络是信号刺激产生新的连接, 让信号能够通过新的连接形成反馈.</p><h2 id="p2-什么是神经网络"><a href="#p2-什么是神经网络" class="headerlink" title="p2.什么是神经网络"></a>p2.什么是神经网络</h2><p>1.能够在外界的信息的基础上改变内部的结构. 是一种自适应的过程.</p><p>2.神经网络是一种运算模型</p><h2 id="p3-神经网络-梯度下降"><a href="#p3-神经网络-梯度下降" class="headerlink" title="p3.神经网络:梯度下降"></a>p3.神经网络:梯度下降</h2><p>1.optimization优化问题: 它是人类历史上的重大突破, 它解决了很多生活中的问题</p><p>2.类别: Newton’s method      Least Squares method      Gradient Descent</p><h2 id="p4-神经网络的黑盒不黑-深度理解"><a href="#p4-神经网络的黑盒不黑-深度理解" class="headerlink" title="p4.神经网络的黑盒不黑(深度理解)"></a>p4.神经网络的黑盒不黑(深度理解)</h2><p>输入–&gt;加工–&gt;输出</p><p>加工的过程就是黑盒: 输入端,中间,输出端</p><p>每一层可以看成向量的线性变换或者非线性变换</p><p>黑盒加工处理: 将一种代表特征转换为另一种代表特征, 即一次次的特征转换, 一次次的更有深度的理解.   这里可以理解为把输入信息矩阵化,通过提取特征值或者做SVD之类的变换得到新的特征矩阵</p><p>称为黑盒的原因: 代表特征太多了, 人类无法看明白, 但是计算机可以看明白他们所学到的规律.</p><h2 id="p5-1-1-why使用pytorch"><a href="#p5-1-1-why使用pytorch" class="headerlink" title="p5 1.1 why使用pytorch"></a>p5 1.1 why使用pytorch</h2><p>pytorch是torch在python上衍生.  因为torch是一个使用Lua语言的神经网络库, torch很好用, 但是Lua又不是很流行,所以开发团队将Lua的Torch移植到更流行的语言python上.</p><p>pytorch是17年初才公开的模块.  tensorflow的一些概念静态图或者搭建流程图概念不是很理解.   但是使用pytorch更能诠释神经网络的工作流程, 性能和tensorflow差不多.</p><p>和tensorflow(静态模型)的区别: pytorch在搭建图的时候, 它不是先建好一个静态的流程图,然后在把数据放到流程图里面计算.   它是边输入数据边搭建图, 它是一个动态的过程.</p><h2 id="p6-1-2-安装"><a href="#p6-1-2-安装" class="headerlink" title="p6 1.2 安装"></a>p6 1.2 安装</h2><p>安装的时候安装了两个东西: 1.一个是pytorch的主模块  2.torchvision它是有一个数据库(图片), 有些训练好的网络</p><h2 id="p7-2-1-numpy和torch对比"><a href="#p7-2-1-numpy和torch对比" class="headerlink" title="p7 2.1 numpy和torch对比"></a>p7 2.1 numpy和torch对比</h2><p>numpy: 处理数据的模块, 处理矩阵, 使用你的多核来加速运算.  把array放在CPU中加速运算</p><p>Torch自称为神经网络界的Numpy, 因为它能将torch产生的tensor放在GPU中加速运算.</p><p>tensor是一个张量</p><h2 id="p8-2-2-variable变量"><a href="#p8-2-2-variable变量" class="headerlink" title="p8 2.2 variable变量"></a>p8 2.2 variable变量</h2><h2 id="p"><a href="#p" class="headerlink" title="p"></a>p</h2><h2 id="p-1"><a href="#p-1" class="headerlink" title="p"></a>p</h2>]]></content>
+    <content type="html"><![CDATA[<h1 id="Pytorch"><a href="#Pytorch" class="headerlink" title="Pytorch"></a>Pytorch</h1><h2 id="p1-人工神经网络与生物神经网络"><a href="#p1-人工神经网络与生物神经网络" class="headerlink" title="p1.人工神经网络与生物神经网络"></a>p1.人工神经网络与生物神经网络</h2><p>1.生物神经网络:数以万计的神经连接, 900亿的神经细胞组成了我们复杂的神经系统</p><p>2.记忆的形成: 生成了新的突触, 记忆就产生了.  但是形成的新连接怎么形成记忆仍然是科学界的一个迷.</p><p>3.人工神经网络: 比如Google的搜索引擎,股票价格预测,集成学习,家庭助手,围棋alphago</p><p>4.已经成体系的人工神经网络, 神经元之间的连接都是固定不可更换的. 也就是说在人工神经网络里没有凭空产生新连接这回事.  它靠的是正向和反向传播来更新神经元, 从而形成一个更好的神经系统. 本质上这是一个可以处理优化的数学模型. 而生物神经网络是信号刺激产生新的连接, 让信号能够通过新的连接形成反馈.</p><h2 id="p2-什么是神经网络"><a href="#p2-什么是神经网络" class="headerlink" title="p2.什么是神经网络"></a>p2.什么是神经网络</h2><p>1.能够在外界的信息的基础上改变内部的结构. 是一种自适应的过程.</p><p>2.神经网络是一种运算模型</p><h2 id="p3-神经网络-梯度下降"><a href="#p3-神经网络-梯度下降" class="headerlink" title="p3.神经网络:梯度下降"></a>p3.神经网络:梯度下降</h2><p>1.optimization优化问题: 它是人类历史上的重大突破, 它解决了很多生活中的问题</p><p>2.类别: Newton’s method      Least Squares method      Gradient Descent</p><h2 id="p4-神经网络的黑盒不黑-深度理解"><a href="#p4-神经网络的黑盒不黑-深度理解" class="headerlink" title="p4.神经网络的黑盒不黑(深度理解)"></a>p4.神经网络的黑盒不黑(深度理解)</h2><p>输入–&gt;加工–&gt;输出</p><p>加工的过程就是黑盒: 输入端,中间,输出端</p><p>每一层可以看成向量的线性变换或者非线性变换</p><p>黑盒加工处理: 将一种代表特征转换为另一种代表特征, 即一次次的特征转换, 一次次的更有深度的理解.   这里可以理解为把输入信息矩阵化,通过提取特征值或者做SVD之类的变换得到新的特征矩阵</p><p>称为黑盒的原因: 代表特征太多了, 人类无法看明白, 但是计算机可以看明白他们所学到的规律.</p><h2 id="p5-1-1-why使用pytorch"><a href="#p5-1-1-why使用pytorch" class="headerlink" title="p5 1.1 why使用pytorch"></a>p5 1.1 why使用pytorch</h2><p>pytorch是torch在python上衍生.  因为torch是一个使用Lua语言的神经网络库, torch很好用, 但是Lua又不是很流行,所以开发团队将Lua的Torch移植到更流行的语言python上.</p><p>pytorch是17年初才公开的模块.  tensorflow的一些概念静态图或者搭建流程图概念不是很理解.   但是使用pytorch更能诠释神经网络的工作流程, 性能和tensorflow差不多.</p><p>和tensorflow(静态模型)的区别: pytorch在搭建图的时候, 它不是先建好一个静态的流程图,然后在把数据放到流程图里面计算.   它是边输入数据边搭建图, 它是一个动态的过程.</p><h2 id="p6-1-2-安装"><a href="#p6-1-2-安装" class="headerlink" title="p6 1.2 安装"></a>p6 1.2 安装</h2><p>安装的时候安装了两个东西: 1.一个是pytorch的主模块  2.torchvision它是有一个数据库(图片), 有些训练好的网络</p><h2 id="p7-2-1-numpy和torch对比"><a href="#p7-2-1-numpy和torch对比" class="headerlink" title="p7 2.1 numpy和torch对比"></a>p7 2.1 numpy和torch对比</h2><p>numpy: 处理数据的模块, 处理矩阵, 使用你的多核来加速运算.  把array放在CPU中加速运算</p><p>Torch自称为神经网络界的Numpy, 因为它能将torch产生的tensor放在GPU中加速运算.</p><p>tensor是一个张量</p><h2 id="p8-2-2-variable变量"><a href="#p8-2-2-variable变量" class="headerlink" title="p8 2.2 variable变量"></a>p8 2.2 variable变量</h2>]]></content>
     
     
       
@@ -57,38 +57,20 @@
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/19/hello-world/"/>
-    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/19/hello-world/</id>
-    <published>2021-03-19T15:51:36.068Z</published>
-    <updated>2021-03-19T15:51:36.068Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello,LXJ!</title>
+    <title>刘鑫杰博客</title>
     <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/Hello-LXJ/"/>
     <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/Hello-LXJ/</id>
-    <published>2021-03-17T16:02:38.000Z</published>
-    <updated>2021-03-20T06:30:09.727Z</updated>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-20T08:26:39.801Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="好好学习-天天向上"><a href="#好好学习-天天向上" class="headerlink" title="好好学习,天天向上!!!"></a>好好学习,天天向上!!!</h2><h4 id="考研加油"><a href="#考研加油" class="headerlink" title="考研加油!"></a>考研加油!</h4><p>刘鑫杰！ 你看到这段话的时候就配置成功了！</p>]]></content>
+    <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;好好学习-天天向上&quot;&gt;&lt;a href=&quot;#好好学习-天天向上&quot; class=&quot;headerlink&quot; title=&quot;好好学习,天天向上!!!&quot;&gt;&lt;/a&gt;好好学习,天天向上!!!&lt;/h2&gt;&lt;h4 id=&quot;考研加油&quot;&gt;&lt;a href=&quot;#考研加油&quot; class=&quot;he</summary>
+    <summary type="html">&lt;p&gt; Humans are HOOKED. Machines are LEARNING.&lt;/p&gt;
+&lt;p&gt;Go for it! And I will form a good habit from then on.&lt;/p&gt;
+</summary>
       
     
     
