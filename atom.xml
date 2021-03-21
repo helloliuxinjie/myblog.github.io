@@ -58,8 +58,378 @@
   
   <entry>
     <title>刘鑫杰博客</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/CAS%E5%8E%9F%E7%90%86/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/CAS%E5%8E%9F%E7%90%86/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-20T08:26:39.801Z</updated>
+    
+    <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt; Humans are HOOKED. Machines are LEARNING.&lt;/p&gt;
+&lt;p&gt;Go for it! And I will form a good habit from then on.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>刘鑫杰博客</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/DFS%E5%92%8CBFS%E7%AC%94%E8%AE%B0/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/DFS%E5%92%8CBFS%E7%AC%94%E8%AE%B0/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-20T08:26:39.801Z</updated>
+    
+    <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt; Humans are HOOKED. Machines are LEARNING.&lt;/p&gt;
+&lt;p&gt;Go for it! And I will form a good habit from then on.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>刘鑫杰博客</title>
     <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/Hello-LXJ/"/>
     <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/Hello-LXJ/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-20T08:26:39.801Z</updated>
+    
+    <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt; Humans are HOOKED. Machines are LEARNING.&lt;/p&gt;
+&lt;p&gt;Go for it! And I will form a good habit from then on.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JDBC(能够对数据库进行增删改查)</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/JDBC%E7%AC%94%E8%AE%B0/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/JDBC%E7%AC%94%E8%AE%B0/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-21T13:52:04.401Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Java语言连接数据库-JDBC"><a href="#Java语言连接数据库-JDBC" class="headerlink" title="Java语言连接数据库(JDBC)"></a>Java语言连接数据库(JDBC)</h1><p>笔记连接:<a href="https://blog.csdn.net/qq_43649223/article/details/106755584">https://blog.csdn.net/qq_43649223/article/details/106755584</a></p><p>参考连接:<a href="https://blog.csdn.net/upup1006/article/details/95470945">https://blog.csdn.net/upup1006/article/details/95470945</a></p><h2 id="1-JDBC-Java-database-connectivity"><a href="#1-JDBC-Java-database-connectivity" class="headerlink" title="1.JDBC: Java database connectivity"></a>1.JDBC: Java database connectivity</h2><h2 id="2-jdbc-的本质"><a href="#2-jdbc-的本质" class="headerlink" title="2.jdbc 的本质"></a>2.jdbc 的本质</h2><p>jdbc是sun公司制定的一套<strong>接口</strong>, 接口都有调用者和实现者.  面向接口调用, 面向接口写实现类, 这都属于面向接口编程</p><p>为什么要面向接口编程?  解耦合: 降低程序的耦合度, 提高程序的扩展力. 多态机制就是非常典型的: 面向抽象编程. (不要面向具体编程)</p><h2 id="3-为什么SUN制定一套接口"><a href="#3-为什么SUN制定一套接口" class="headerlink" title="3.为什么SUN制定一套接口?"></a>3.为什么SUN制定一套接口?</h2><p>因为每一个数据库的底层实现原理都不一样. oracle mysql MSserver 数据库都有自己的独特的实现原理</p><p>定义一套接口, 所有数据库厂家的Java程序员都按照这套接口去写实现类.   我们面向jdbc接口编程</p><h2 id="4-驱动"><a href="#4-驱动" class="headerlink" title="4.驱动"></a>4.驱动</h2><p>驱动:所有的数据库驱动都是以jar包的形式存在的,jar 中有很多.class文件, 这些class文件就是对jdbc接口的实现.    驱动都是接口的实现类.</p><p>驱动不是sun公司提供的, 而是各大数据库厂家负责提供,下载驱动jar包, 需要去数据库官网下载.</p><h2 id="5-模拟SUN-数据库厂家-我们角色"><a href="#5-模拟SUN-数据库厂家-我们角色" class="headerlink" title="5.模拟SUN 数据库厂家  我们角色"></a>5.模拟SUN 数据库厂家  我们角色</h2><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import java.util.ResourceBundle;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Java程序员</span></span><br><span class="line"><span class="comment"> * 不需要关系具体是哪个品牌的数据库, 只需要面向jdbc接口写代码</span></span><br><span class="line"><span class="comment"> * 面向接口编程</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">public <span class="keyword">class</span> JavaProgrammer &#123;</span><br><span class="line">    public static void main(String<span class="literal">[]</span> args) throws Exception &#123;</span><br><span class="line"><span class="comment">//        JDBC jdbc=new MySql();</span></span><br><span class="line"><span class="comment">//        JDBC jdbc1=new SqlServer();</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建对象可以通过反射机制</span></span><br><span class="line">        ResourceBundle bundle=<span class="module-access"><span class="module"><span class="identifier">ResourceBundle</span>.</span></span>get<span class="constructor">Bundle(<span class="string">&quot;jdbc&quot;</span>)</span>;</span><br><span class="line">        String className=bundle.get<span class="constructor">String(<span class="string">&quot;className&quot;</span>)</span>;</span><br><span class="line">        Class clazz = <span class="module-access"><span class="module"><span class="identifier">Class</span>.</span></span><span class="keyword">for</span><span class="constructor">Name(<span class="params">className</span>)</span>;</span><br><span class="line">        JDBC jdbc=(JDBC)clazz.<span class="keyword">new</span><span class="constructor">Instance()</span>;</span><br><span class="line">        jdbc.get<span class="constructor">Connection()</span>;</span><br><span class="line"><span class="comment">//        jdbc1.getConnection();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SqlServer</span>  <span class="keyword">implements</span> <span class="title">JDBC</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getConnection</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;连接SqlServer数据库成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">className</span>=MySql</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySql</span> <span class="keyword">implements</span> <span class="title">JDBC</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getConnection</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="comment">//具体这里怎么写, 对于我们来说没有关系</span></span><br><span class="line">            <span class="comment">//这段代码涉及到mysql底层数据库的实现原理</span></span><br><span class="line">            System.out.println(<span class="string">&quot;连接mysql数据库成功&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Sun 公司负责制定的JDBC接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="symbol">JDBC</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 连接数据库的方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">   <span class="built_in">void</span> getConnection();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="6-JDBC开发前的准备工作"><a href="#6-JDBC开发前的准备工作" class="headerlink" title="6.JDBC开发前的准备工作"></a>6.JDBC开发前的准备工作</h2><p>先从官网下载对应的驱动jar包, 然后将其配置到环境变量classpath中</p><p>idea不需要这么配置, idea自动完成</p><h2 id="7-JDBC编程六步的概述-需要背会"><a href="#7-JDBC编程六步的概述-需要背会" class="headerlink" title="7.JDBC编程六步的概述(需要背会)"></a>7.JDBC编程六步的概述(需要背会)</h2><p>1.注册驱动(作用: 告诉Java程序,即将要连接的是哪个品牌的数据库)</p><p>2.获取连接(作用: 表示jvm的进程和数据库之间的通道打开了, 这属于进程之间的通信, 重量级, 使用完之后一定要关闭通道)</p><p>3.获取数据库操作对象(专门执行SQL语句的对象)</p><p>4.执行SQL语句(DQL,DML…)</p><p>5.处理查询结果集(只有当第四步执行的是select语句的时候,才有第五步处理查询的结果集)</p><p>6.释放资源(使用完资源之后一定要关闭资源,Java和数据库属于进程间的通信,开启之后一定要关闭)</p><p>学完jdbc, 下一站学框架</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Java语言连接数据库-JDBC&quot;&gt;&lt;a href=&quot;#Java语言连接数据库-JDBC&quot; class=&quot;headerlink&quot; title=&quot;Java语言连接数据库(JDBC)&quot;&gt;&lt;/a&gt;Java语言连接数据库(JDBC)&lt;/h1&gt;&lt;p&gt;笔记连接:&lt;a href</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>刘鑫杰博客</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-20T08:26:39.801Z</updated>
+    
+    <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt; Humans are HOOKED. Machines are LEARNING.&lt;/p&gt;
+&lt;p&gt;Go for it! And I will form a good habit from then on.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>刘鑫杰博客</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/Mybatis/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/Mybatis/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-20T08:26:39.801Z</updated>
+    
+    <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt; Humans are HOOKED. Machines are LEARNING.&lt;/p&gt;
+&lt;p&gt;Go for it! And I will form a good habit from then on.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>刘鑫杰博客</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/SpringBoot%E7%AC%94%E8%AE%B0/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/SpringBoot%E7%AC%94%E8%AE%B0/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-20T08:26:39.801Z</updated>
+    
+    <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt; Humans are HOOKED. Machines are LEARNING.&lt;/p&gt;
+&lt;p&gt;Go for it! And I will form a good habit from then on.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>刘鑫杰博客</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/hashmap/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/hashmap/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-20T08:26:39.801Z</updated>
+    
+    <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt; Humans are HOOKED. Machines are LEARNING.&lt;/p&gt;
+&lt;p&gt;Go for it! And I will form a good habit from then on.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>刘鑫杰博客</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/redis/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/redis/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-20T08:26:39.801Z</updated>
+    
+    <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt; Humans are HOOKED. Machines are LEARNING.&lt;/p&gt;
+&lt;p&gt;Go for it! And I will form a good habit from then on.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>刘鑫杰博客</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-20T08:26:39.801Z</updated>
+    
+    <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt; Humans are HOOKED. Machines are LEARNING.&lt;/p&gt;
+&lt;p&gt;Go for it! And I will form a good habit from then on.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>刘鑫杰博客</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-20T08:26:39.801Z</updated>
+    
+    <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt; Humans are HOOKED. Machines are LEARNING.&lt;/p&gt;
+&lt;p&gt;Go for it! And I will form a good habit from then on.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>刘鑫杰博客</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92(%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98)/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92(%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98)/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-20T08:26:39.801Z</updated>
+    
+    <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt; Humans are HOOKED. Machines are LEARNING.&lt;/p&gt;
+&lt;p&gt;Go for it! And I will form a good habit from then on.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>刘鑫杰博客</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%8F%8D%E5%B0%84%E7%AC%94%E8%AE%B0/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%8F%8D%E5%B0%84%E7%AC%94%E8%AE%B0/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-20T08:26:39.801Z</updated>
+    
+    <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt; Humans are HOOKED. Machines are LEARNING.&lt;/p&gt;
+&lt;p&gt;Go for it! And I will form a good habit from then on.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>大学生发期刊</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%8F%91%E6%9C%9F%E5%88%8A%E6%AD%A5%E9%AA%A4/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%8F%91%E6%9C%9F%E5%88%8A%E6%AD%A5%E9%AA%A4/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-21T06:32:08.480Z</updated>
+    
+    <content type="html"><![CDATA[<p>第一步：写。你得把论文写出来，这是关键，没有论文是不可能发表的，您说对吧。但是写论文也是有技巧的，简单来说，就是专业知识+一定的技巧。专业知识不用说了，就是平时你学习、生活、工作中积累的知识、素材。技巧就是指选题立意，甚至格式、图表的制作等，都需要一定地技巧。这个只能在平时多学习，靠一时的指点是不行的。</p><p>第二步：投。写完论文后投稿。投稿就有技巧可言了，甚至直接关系到论文是否被录用。这里需要注意几个问题，一是明确需要发表期刊的级别，因为级别越高，越难发表，在中国，期刊按大类可分为普通期刊和核心期刊。但按我们公司十年的经验来看，中国的期刊按发表难易程度可分为下面几类，给钱就发的（以名字不好听的垃圾期刊、假刊为代表），需要审核但基本都能过的（以对外承包的期刊为代表），需要审核但过稿率不太高的（以比较难发的普刊为代表）、过稿率非常低，审核在半月左右的（以高端普刊，例如本科学报为代表）、极难发表的（以核心期刊为代表）。如果本科生来发表，一定要弄清自己为什么要发表，即自己发表的目的。是为了评奖学金？以后保研，还是单纯学术爱好。如果是前两项，我们称之为功利性发表的，那么，非常简单，直接把自己学校的文件找出来，找到符合学校标准的期刊，然后投最好录用的一个，如果学术爱好等，那么就认真选期刊吧。说的比较多了，这一块技巧比较多，可以私信或留言，大家继续交流。</p><p>第三步：录。即投稿被录用。但大家并要注意一个问题，并不是你投稿了就一定能录用，不录用的情况也非常多。如果录用之后并不是就能高枕无忧了，并不是，后期还有修改、排版定稿后的核实、版面费等，有的还要授权书、版权证明书之类的，所以，一定要经常和编辑沟通，争取早日收到杂志。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;第一步：写。你得把论文写出来，这是关键，没有论文是不可能发表的，您说对吧。但是写论文也是有技巧的，简单来说，就是专业知识+一定的技巧。专业知识不用说了，就是平时你学习、生活、工作中积累的知识、素材。技巧就是指选题立意，甚至格式、图表的制作等，都需要一定地技巧。这个只能在平时</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>刘鑫杰博客</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E4%B9%8B%E7%B1%BB%E7%9A%84/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E4%B9%8B%E7%B1%BB%E7%9A%84/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-20T08:26:39.801Z</updated>
+    
+    <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt; Humans are HOOKED. Machines are LEARNING.&lt;/p&gt;
+&lt;p&gt;Go for it! And I will form a good habit from then on.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>刘鑫杰博客</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-20T08:26:39.801Z</updated>
+    
+    <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt; Humans are HOOKED. Machines are LEARNING.&lt;/p&gt;
+&lt;p&gt;Go for it! And I will form a good habit from then on.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>刘鑫杰博客</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>2021-03-18T10:02:38.000Z</published>
+    <updated>2021-03-20T08:26:39.801Z</updated>
+    
+    <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt; Humans are HOOKED. Machines are LEARNING.&lt;/p&gt;
+&lt;p&gt;Go for it! And I will form a good habit from then on.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>刘鑫杰博客</title>
+    <link href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E6%95%B0%E6%8D%AE%E5%BA%93mysql/"/>
+    <id>https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E6%95%B0%E6%8D%AE%E5%BA%93mysql/</id>
     <published>2021-03-18T10:02:38.000Z</published>
     <updated>2021-03-20T08:26:39.801Z</updated>
     

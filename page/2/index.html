@@ -23,7 +23,7 @@
 <meta name="description" content="越努力越幸运!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="加肥猫的学习博客">
-<meta property="og:url" content="https://helloliuxinjie.github.io/myblog.github.io/index.html">
+<meta property="og:url" content="https://helloliuxinjie.github.io/myblog.github.io/page/2/index.html">
 <meta property="og:site_name" content="加肥猫的学习博客">
 <meta property="og:description" content="越努力越幸运!">
 <meta property="og:locale" content="zh_CN">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://helloliuxinjie.github.io/myblog.github.io/">
+<link rel="canonical" href="https://helloliuxinjie.github.io/myblog.github.io/page/2/">
 
 
 <script class="page-configurations">
@@ -260,7 +260,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/20/VAE/">
+    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/redis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
@@ -274,202 +274,7 @@
       <header class="post-header">
 	  
         <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/20/VAE/" class="post-title-link" itemprop="url">变分自动编码器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-20 16:42:38 / 修改时间：16:27:34" itemprop="dateCreated datePublished" datetime="2021-03-20T16:42:38+08:00">2021-03-20</time>
-    </span>
-
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.1k</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="基于VAE的Mnist手写体图像生成笔记"><a href="#基于VAE的Mnist手写体图像生成笔记" class="headerlink" title="基于VAE的Mnist手写体图像生成笔记"></a>基于VAE的Mnist手写体图像生成笔记</h1><h2 id="1-判别模型与生成模型"><a href="#1-判别模型与生成模型" class="headerlink" title="1.判别模型与生成模型"></a>1.判别模型与生成模型</h2><p>在传统机器学习模型一般分为两类</p>
-<h3 id="1-1-判别模型"><a href="#1-1-判别模型" class="headerlink" title="1.1 判别模型"></a>1.1 判别模型</h3><p>给定数据x, 比如一张图像.  标签y, 比如猫或者狗.   判别模型只在建模给定x后,对标签y的条件概率分布.  根据条件概率大小进行分类. 它可以用于各种分类任务.</p>
-<p>判别任务具有更为直接和广泛的应用.</p>
-<h3 id="1-2-生成模型"><a href="#1-2-生成模型" class="headerlink" title="1.2 生成模型"></a>1.2 生成模型</h3><p>通常假设数据x的产生, 服从一个有隐变量z控制的一个隐藏生成过程.  进而去建模数据x与隐变量z的联合概率分布.  从而根据z的先验分布p(z)–&gt;以及给定z后x的生成分布p(x|z), 对x进行采样, 生成新的数据样本.</p>
-<p>生成模型更具趣味性, 因为他可以生成之前并不存在的样本. 它可以揭示数据背后的隐藏结构,从而展现机器的一个想象力, 拓宽人类的视野.</p>
-<h2 id="2-基于深度学习的生成模型"><a href="#2-基于深度学习的生成模型" class="headerlink" title="2. 基于深度学习的生成模型"></a>2. 基于深度学习的生成模型</h2><p>随着深度学习的发展, 深度生成模型成为了当下的热点. 如今主流的生成模型主要分为两类: 生成对抗网络(GAN)和变分自编码器(VAE)</p>
-<h3 id="2-1-生成对抗网络-GAN"><a href="#2-1-生成对抗网络-GAN" class="headerlink" title="2.1 生成对抗网络(GAN)"></a>2.1 生成对抗网络(GAN)</h3><p>生成网络与判别网络最小-最大化博弈, 从而在迭代的过程中, 生成网络可以骗过判别网络, 生成高质量的原始数据.   由于GAN基于博弈论的数学原理极为有趣, 它吸引了大量的研究.  由于它只能从隐变量的先验分布p(z)中随机采样生成新样本.  而不能表达给定x之后, 隐变量z的后验概率分布, 因此在应用中具有局限性.</p>
-<h3 id="2-2-变分自编码器-VAE"><a href="#2-2-变分自编码器-VAE" class="headerlink" title="2.2 变分自编码器(VAE)"></a>2.2 变分自编码器(VAE)</h3><p>利用解码网络自下而上建模生成过程, 也就是给定z后, x的条件概率分布p(x|z)</p>
-<p>利用编码网络自下而上的推理过程, 即给定x后的, z的后验概率</p>
-<p>因此VAE的语义空间具有更加明显的语义结构, 它同时具有生成和推理的过程.  因此VAE在多项任务,比如说计算机视觉, 自然语言处理, 推荐系统方面具有广泛的应用.</p>
-<h2 id="3-变分自编码器-VAE"><a href="#3-变分自编码器-VAE" class="headerlink" title="3.变分自编码器(VAE)"></a>3.变分自编码器(VAE)</h2><h3 id="3-1-生成过程-给定某一个z-利用其生成数据x"><a href="#3-1-生成过程-给定某一个z-利用其生成数据x" class="headerlink" title="3.1 生成过程(给定某一个z, 利用其生成数据x)"></a>3.1 生成过程(给定某一个z, 利用其生成数据x)</h3><p>假设隐变量z的先验p(z), 在没有给定任何数据的时候, 服从一个标准的正态分布.   现在假定给定z后, x服从条件概率分布p(x|z), 即可以由一个深度神经网络解码器(一个DNN)来表示, 该网络以theta作为其可训练权重, 以z作为输入.          当x是连续的实变量时, 我们可以假设它服从高斯分布, 从而将网络未加任何激活函数的原始输出作为高斯分布的均值.         当x是一个离散变量的时候, 我们可以假设它服从二元或者多元伯努利分布, 这时对网络的输出进行sigmoid或者softmax函数进行归一化, 可以作为该分布对应类别的概率.</p>
-<h3 id="3-2推理过程-即给定某一个x-z的后验概率分布"><a href="#3-2推理过程-即给定某一个x-z的后验概率分布" class="headerlink" title="3.2推理过程(即给定某一个x, z的后验概率分布)"></a>3.2推理过程(即给定某一个x, z的后验概率分布)</h3><p>在给定上述隐变量z的先验概率p(z)以及数据x的生成概率p(x|z)之后, 给定一个样本x,对齐隐变量的推理P(z|x), 需要知道z的后验概率分布p(z|x),  而根据贝叶斯定理, 计算z的后验概率分布需要 x的边缘概率p(x)即归一化常数.    但是p(x)=fp(z)p(x|z)dz中的生成条件概率p(x|z)是由深度神经网络表示的, 是非线性的, 没有显式解, 因此, 该后验概率不可解!</p>
-<h3 id="3-3-变分近似后验"><a href="#3-3-变分近似后验" class="headerlink" title="3.3 变分近似后验"></a>3.3 变分近似后验</h3><p>为了解决上述后验概率不可解的问题.  VAE假设存在一个q(z|x), 这里的权重参数为Ψ, 即编码器网络, 去近似不可解的后验.   VAE旨在从q(Ψ)中找到一个与上面的真实但不可解的后验概率分布p(这里参数为θ)的KL散度最小的一个分布, 作为它的一个近似.</p>
-<h3 id="3-4-优化目标-最小化qΨ-z-x-与pθ-z-x-之间的KL散度"><a href="#3-4-优化目标-最小化qΨ-z-x-与pθ-z-x-之间的KL散度" class="headerlink" title="3.4 优化目标: 最小化qΨ(z|x)与pθ(z|x)之间的KL散度"></a>3.4 优化目标: 最小化qΨ(z|x)与pθ(z|x)之间的KL散度</h3><p>根据式1, 由于x的边缘分布p(x)中不含有隐变量z, 所以它是一个常数, 显然它不可解.    最小化KL散度等价于最大化后面这个式子L即式2, 因为KL散度是大于0的量, 所以L属于边缘分布对数的一个下界</p>
-<p>根据式2即L表达式,  它由两个项组成, 其一是生成x概率的对数似然的期望,对其进行最大化,可以使得z能解释出现的数据x,从而约束隐空间的语义结构       其二是z的先验概率分布p(z)与z的后验概率分布的KL散度, 该项使得后验尽可能的去接近先验, 它作为正则化项控制编码器模型的复杂度.</p>
-<h3 id="3-5-本文使用的网络结构"><a href="#3-5-本文使用的网络结构" class="headerlink" title="3.5 本文使用的网络结构"></a>3.5 本文使用的网络结构</h3><p>x是图像,  因此编码器网络首先采用卷积神经网络对图像进行特征提取, 同时在卷积层之间采用p归一化, 防止发生均值漂移,并且减轻过拟合的影响.  最后我们将后一个卷积层输出的特征图谱展开为一维,经过一个全连接层后, 分别用两个全连接层去预测隐变量的均值和方差.  为了使梯度能够正常的传递,VAE采用了重参数化技巧(即给定隐变量z的均值和标准差,我们首先从标准正态分布采到一个样本 ε,然后z=μ+σ*ε 作为z的样本进行前向传播).        在解码器中, 给定隐变量z的一个样本之后,通过全连接层将它映射到编码器最后一个卷积层输出特征图谱, 展开成为一维后的大小, 并将其reshape, 使其具有对应的空间维度, 接着解码器采用了一个解卷积层, 将特征图谱的空间分辨率提升到原来的大小. 最后解码器采用了以sigmoid为激活函数的卷积层还原得到原始数据x’</p>
-<h1 id="VAE-另一项目"><a href="#VAE-另一项目" class="headerlink" title="VAE 另一项目"></a>VAE 另一项目</h1><p><a target="_blank" rel="noopener" href="https://kexue.fm/archives/5253">gitee</a></p>
-<p><a target="_blank" rel="noopener" href="https://gitee.com/cao_yu_fei/vae_keras?_from=gitee_search#https://kexue.fm/archives/5253">vae_keras</a></p>
-<h1 id="VAE-基于pytorch的项目"><a href="#VAE-基于pytorch的项目" class="headerlink" title="VAE 基于pytorch的项目"></a>VAE 基于pytorch的项目</h1><p><a target="_blank" rel="noopener" href="https://gitee.com/xubinlee/VAE-CVAE-MNIST?_from=gitee_search">VAE-CVAE-MNIST</a></p>
-<p><a target="_blank" rel="noopener" href="https://gitee.com/piglittle/multi-level-vae?_from=gitee_search">multi-level-vae</a></p>
-<p><a target="_blank" rel="noopener" href="https://gitee.com/asdxyz1234/VAE?_from=gitee_search#https://github.com/AntixK/PyTorch-VAE/blob/master/models/vanilla_vae.py">有比较的全的vae源码</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/19/pytorch/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
-      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
-      <meta itemprop="description" content="越努力越幸运!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="加肥猫的学习博客">
-    </span>
-      <header class="post-header">
-	  
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/19/pytorch/" class="post-title-link" itemprop="url">深度学习框架pytorch学习笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-19 21:02:38" itemprop="dateCreated datePublished" datetime="2021-03-19T21:02:38+08:00">2021-03-19</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-20 16:27:12" itemprop="dateModified" datetime="2021-03-20T16:27:12+08:00">2021-03-20</time>
-      </span>
-
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Pytorch"><a href="#Pytorch" class="headerlink" title="Pytorch"></a>Pytorch</h1><h2 id="p1-人工神经网络与生物神经网络"><a href="#p1-人工神经网络与生物神经网络" class="headerlink" title="p1.人工神经网络与生物神经网络"></a>p1.人工神经网络与生物神经网络</h2><p>1.生物神经网络:数以万计的神经连接, 900亿的神经细胞组成了我们复杂的神经系统</p>
-<p>2.记忆的形成: 生成了新的突触, 记忆就产生了.  但是形成的新连接怎么形成记忆仍然是科学界的一个迷.</p>
-<p>3.人工神经网络: 比如Google的搜索引擎,股票价格预测,集成学习,家庭助手,围棋alphago</p>
-<p>4.已经成体系的人工神经网络, 神经元之间的连接都是固定不可更换的. 也就是说在人工神经网络里没有凭空产生新连接这回事.  它靠的是正向和反向传播来更新神经元, 从而形成一个更好的神经系统. 本质上这是一个可以处理优化的数学模型. 而生物神经网络是信号刺激产生新的连接, 让信号能够通过新的连接形成反馈.</p>
-<h2 id="p2-什么是神经网络"><a href="#p2-什么是神经网络" class="headerlink" title="p2.什么是神经网络"></a>p2.什么是神经网络</h2><p>1.能够在外界的信息的基础上改变内部的结构. 是一种自适应的过程.</p>
-<p>2.神经网络是一种运算模型</p>
-<h2 id="p3-神经网络-梯度下降"><a href="#p3-神经网络-梯度下降" class="headerlink" title="p3.神经网络:梯度下降"></a>p3.神经网络:梯度下降</h2><p>1.optimization优化问题: 它是人类历史上的重大突破, 它解决了很多生活中的问题</p>
-<p>2.类别: Newton’s method      Least Squares method      Gradient Descent</p>
-<h2 id="p4-神经网络的黑盒不黑-深度理解"><a href="#p4-神经网络的黑盒不黑-深度理解" class="headerlink" title="p4.神经网络的黑盒不黑(深度理解)"></a>p4.神经网络的黑盒不黑(深度理解)</h2><p>输入–&gt;加工–&gt;输出</p>
-<p>加工的过程就是黑盒: 输入端,中间,输出端</p>
-<p>每一层可以看成向量的线性变换或者非线性变换</p>
-<p>黑盒加工处理: 将一种代表特征转换为另一种代表特征, 即一次次的特征转换, 一次次的更有深度的理解.   这里可以理解为把输入信息矩阵化,通过提取特征值或者做SVD之类的变换得到新的特征矩阵</p>
-<p>称为黑盒的原因: 代表特征太多了, 人类无法看明白, 但是计算机可以看明白他们所学到的规律.</p>
-<h2 id="p5-1-1-why使用pytorch"><a href="#p5-1-1-why使用pytorch" class="headerlink" title="p5 1.1 why使用pytorch"></a>p5 1.1 why使用pytorch</h2><p>pytorch是torch在python上衍生.  因为torch是一个使用Lua语言的神经网络库, torch很好用, 但是Lua又不是很流行,所以开发团队将Lua的Torch移植到更流行的语言python上.</p>
-<p>pytorch是17年初才公开的模块.  tensorflow的一些概念静态图或者搭建流程图概念不是很理解.   但是使用pytorch更能诠释神经网络的工作流程, 性能和tensorflow差不多.</p>
-<p>和tensorflow(静态模型)的区别: pytorch在搭建图的时候, 它不是先建好一个静态的流程图,然后在把数据放到流程图里面计算.   它是边输入数据边搭建图, 它是一个动态的过程.</p>
-<h2 id="p6-1-2-安装"><a href="#p6-1-2-安装" class="headerlink" title="p6 1.2 安装"></a>p6 1.2 安装</h2><p>安装的时候安装了两个东西: 1.一个是pytorch的主模块  2.torchvision它是有一个数据库(图片), 有些训练好的网络</p>
-<h2 id="p7-2-1-numpy和torch对比"><a href="#p7-2-1-numpy和torch对比" class="headerlink" title="p7 2.1 numpy和torch对比"></a>p7 2.1 numpy和torch对比</h2><p>numpy: 处理数据的模块, 处理矩阵, 使用你的多核来加速运算.  把array放在CPU中加速运算</p>
-<p>Torch自称为神经网络界的Numpy, 因为它能将torch产生的tensor放在GPU中加速运算.</p>
-<p>tensor是一个张量</p>
-<h2 id="p8-2-2-variable变量"><a href="#p8-2-2-variable变量" class="headerlink" title="p8 2.2 variable变量"></a>p8 2.2 variable变量</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/CAS%E5%8E%9F%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
-      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
-      <meta itemprop="description" content="越努力越幸运!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="加肥猫的学习博客">
-    </span>
-      <header class="post-header">
-	  
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/18/CAS%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
+          <a href="/myblog.github.io/2021/03/18/redis/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
         </h2>
 
         <div class="post-meta-container">
@@ -537,7 +342,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/DFS%E5%92%8CBFS%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
@@ -551,7 +356,7 @@
       <header class="post-header">
 	  
         <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/18/DFS%E5%92%8CBFS%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
+          <a href="/myblog.github.io/2021/03/18/%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
         </h2>
 
         <div class="post-meta-container">
@@ -619,7 +424,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/Hello-LXJ/">
+    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
@@ -633,7 +438,7 @@
       <header class="post-header">
 	  
         <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/18/Hello-LXJ/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
+          <a href="/myblog.github.io/2021/03/18/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
         </h2>
 
         <div class="post-meta-container">
@@ -701,7 +506,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/JDBC%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92(%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
@@ -715,120 +520,7 @@
       <header class="post-header">
 	  
         <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/18/JDBC%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">JDBC(能够对数据库进行增删改查)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-18 18:02:38" itemprop="dateCreated datePublished" datetime="2021-03-18T18:02:38+08:00">2021-03-18</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-21 21:52:04" itemprop="dateModified" datetime="2021-03-21T21:52:04+08:00">2021-03-21</time>
-      </span>
-
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.8k</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Java语言连接数据库-JDBC"><a href="#Java语言连接数据库-JDBC" class="headerlink" title="Java语言连接数据库(JDBC)"></a>Java语言连接数据库(JDBC)</h1><p>笔记连接:<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43649223/article/details/106755584">https://blog.csdn.net/qq_43649223/article/details/106755584</a></p>
-<p>参考连接:<a target="_blank" rel="noopener" href="https://blog.csdn.net/upup1006/article/details/95470945">https://blog.csdn.net/upup1006/article/details/95470945</a></p>
-<h2 id="1-JDBC-Java-database-connectivity"><a href="#1-JDBC-Java-database-connectivity" class="headerlink" title="1.JDBC: Java database connectivity"></a>1.JDBC: Java database connectivity</h2><h2 id="2-jdbc-的本质"><a href="#2-jdbc-的本质" class="headerlink" title="2.jdbc 的本质"></a>2.jdbc 的本质</h2><p>jdbc是sun公司制定的一套<strong>接口</strong>, 接口都有调用者和实现者.  面向接口调用, 面向接口写实现类, 这都属于面向接口编程</p>
-<p>为什么要面向接口编程?  解耦合: 降低程序的耦合度, 提高程序的扩展力. 多态机制就是非常典型的: 面向抽象编程. (不要面向具体编程)</p>
-<h2 id="3-为什么SUN制定一套接口"><a href="#3-为什么SUN制定一套接口" class="headerlink" title="3.为什么SUN制定一套接口?"></a>3.为什么SUN制定一套接口?</h2><p>因为每一个数据库的底层实现原理都不一样. oracle mysql MSserver 数据库都有自己的独特的实现原理</p>
-<p>定义一套接口, 所有数据库厂家的Java程序员都按照这套接口去写实现类.   我们面向jdbc接口编程</p>
-<h2 id="4-驱动"><a href="#4-驱动" class="headerlink" title="4.驱动"></a>4.驱动</h2><p>驱动:所有的数据库驱动都是以jar包的形式存在的,jar 中有很多.class文件, 这些class文件就是对jdbc接口的实现.    驱动都是接口的实现类.</p>
-<p>驱动不是sun公司提供的, 而是各大数据库厂家负责提供,下载驱动jar包, 需要去数据库官网下载.</p>
-<h2 id="5-模拟SUN-数据库厂家-我们角色"><a href="#5-模拟SUN-数据库厂家-我们角色" class="headerlink" title="5.模拟SUN 数据库厂家  我们角色"></a>5.模拟SUN 数据库厂家  我们角色</h2><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import java.util.ResourceBundle;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Java程序员</span></span><br><span class="line"><span class="comment"> * 不需要关系具体是哪个品牌的数据库, 只需要面向jdbc接口写代码</span></span><br><span class="line"><span class="comment"> * 面向接口编程</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">public <span class="keyword">class</span> JavaProgrammer &#123;</span><br><span class="line">    public static void main(String<span class="literal">[]</span> args) throws Exception &#123;</span><br><span class="line"><span class="comment">//        JDBC jdbc=new MySql();</span></span><br><span class="line"><span class="comment">//        JDBC jdbc1=new SqlServer();</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建对象可以通过反射机制</span></span><br><span class="line">        ResourceBundle bundle=<span class="module-access"><span class="module"><span class="identifier">ResourceBundle</span>.</span></span>get<span class="constructor">Bundle(<span class="string">&quot;jdbc&quot;</span>)</span>;</span><br><span class="line">        String className=bundle.get<span class="constructor">String(<span class="string">&quot;className&quot;</span>)</span>;</span><br><span class="line">        Class clazz = <span class="module-access"><span class="module"><span class="identifier">Class</span>.</span></span><span class="keyword">for</span><span class="constructor">Name(<span class="params">className</span>)</span>;</span><br><span class="line">        JDBC jdbc=(JDBC)clazz.<span class="keyword">new</span><span class="constructor">Instance()</span>;</span><br><span class="line">        jdbc.get<span class="constructor">Connection()</span>;</span><br><span class="line"><span class="comment">//        jdbc1.getConnection();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SqlServer</span>  <span class="keyword">implements</span> <span class="title">JDBC</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getConnection</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;连接SqlServer数据库成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">className</span>=MySql</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySql</span> <span class="keyword">implements</span> <span class="title">JDBC</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getConnection</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="comment">//具体这里怎么写, 对于我们来说没有关系</span></span><br><span class="line">            <span class="comment">//这段代码涉及到mysql底层数据库的实现原理</span></span><br><span class="line">            System.out.println(<span class="string">&quot;连接mysql数据库成功&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Sun 公司负责制定的JDBC接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="symbol">JDBC</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 连接数据库的方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">   <span class="built_in">void</span> getConnection();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="6-JDBC开发前的准备工作"><a href="#6-JDBC开发前的准备工作" class="headerlink" title="6.JDBC开发前的准备工作"></a>6.JDBC开发前的准备工作</h2><p>先从官网下载对应的驱动jar包, 然后将其配置到环境变量classpath中</p>
-<p>idea不需要这么配置, idea自动完成</p>
-<h2 id="7-JDBC编程六步的概述-需要背会"><a href="#7-JDBC编程六步的概述-需要背会" class="headerlink" title="7.JDBC编程六步的概述(需要背会)"></a>7.JDBC编程六步的概述(需要背会)</h2><p>1.注册驱动(作用: 告诉Java程序,即将要连接的是哪个品牌的数据库)</p>
-<p>2.获取连接(作用: 表示jvm的进程和数据库之间的通道打开了, 这属于进程之间的通信, 重量级, 使用完之后一定要关闭通道)</p>
-<p>3.获取数据库操作对象(专门执行SQL语句的对象)</p>
-<p>4.执行SQL语句(DQL,DML…)</p>
-<p>5.处理查询结果集(只有当第四步执行的是select语句的时候,才有第五步处理查询的结果集)</p>
-<p>6.释放资源(使用完资源之后一定要关闭资源,Java和数据库属于进程间的通信,开启之后一定要关闭)</p>
-<p>学完jdbc, 下一站学框架</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
-      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
-      <meta itemprop="description" content="越努力越幸运!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="加肥猫的学习博客">
-    </span>
-      <header class="post-header">
-	  
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/18/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
+          <a href="/myblog.github.io/2021/03/18/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92(%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98)/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
         </h2>
 
         <div class="post-meta-container">
@@ -896,7 +588,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/Mybatis/">
+    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%8F%8D%E5%B0%84%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
@@ -910,7 +602,7 @@
       <header class="post-header">
 	  
         <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/18/Mybatis/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
+          <a href="/myblog.github.io/2021/03/18/%E5%8F%8D%E5%B0%84%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
         </h2>
 
         <div class="post-meta-container">
@@ -978,7 +670,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/SpringBoot%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%8F%91%E6%9C%9F%E5%88%8A%E6%AD%A5%E9%AA%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
@@ -992,7 +684,90 @@
       <header class="post-header">
 	  
         <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/18/SpringBoot%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
+          <a href="/myblog.github.io/2021/03/18/%E5%8F%91%E6%9C%9F%E5%88%8A%E6%AD%A5%E9%AA%A4/" class="post-title-link" itemprop="url">大学生发期刊</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-18 18:02:38" itemprop="dateCreated datePublished" datetime="2021-03-18T18:02:38+08:00">2021-03-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-03-21 14:32:08" itemprop="dateModified" datetime="2021-03-21T14:32:08+08:00">2021-03-21</time>
+      </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>708</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>第一步：写。你得把论文写出来，这是关键，没有论文是不可能发表的，您说对吧。但是写论文也是有技巧的，简单来说，就是专业知识+一定的技巧。专业知识不用说了，就是平时你学习、生活、工作中积累的知识、素材。技巧就是指选题立意，甚至格式、图表的制作等，都需要一定地技巧。这个只能在平时多学习，靠一时的指点是不行的。</p>
+<p>第二步：投。写完论文后投稿。投稿就有技巧可言了，甚至直接关系到论文是否被录用。这里需要注意几个问题，一是明确需要发表期刊的级别，因为级别越高，越难发表，在中国，期刊按大类可分为普通期刊和核心期刊。但按我们公司十年的经验来看，中国的期刊按发表难易程度可分为下面几类，给钱就发的（以名字不好听的垃圾期刊、假刊为代表），需要审核但基本都能过的（以对外承包的期刊为代表），需要审核但过稿率不太高的（以比较难发的普刊为代表）、过稿率非常低，审核在半月左右的（以高端普刊，例如本科学报为代表）、极难发表的（以核心期刊为代表）。如果本科生来发表，一定要弄清自己为什么要发表，即自己发表的目的。是为了评奖学金？以后保研，还是单纯学术爱好。如果是前两项，我们称之为功利性发表的，那么，非常简单，直接把自己学校的文件找出来，找到符合学校标准的期刊，然后投最好录用的一个，如果学术爱好等，那么就认真选期刊吧。说的比较多了，这一块技巧比较多，可以私信或留言，大家继续交流。</p>
+<p>第三步：录。即投稿被录用。但大家并要注意一个问题，并不是你投稿了就一定能录用，不录用的情况也非常多。如果录用之后并不是就能高枕无忧了，并不是，后期还有修改、排版定稿后的核实、版面费等，有的还要授权书、版权证明书之类的，所以，一定要经常和编辑沟通，争取早日收到杂志。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E4%B9%8B%E7%B1%BB%E7%9A%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
+      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
+      <meta itemprop="description" content="越努力越幸运!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加肥猫的学习博客">
+    </span>
+      <header class="post-header">
+	  
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/myblog.github.io/2021/03/18/%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E4%B9%8B%E7%B1%BB%E7%9A%84/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1060,7 +835,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/hashmap/">
+    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
@@ -1074,7 +849,171 @@
       <header class="post-header">
 	  
         <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/18/hashmap/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
+          <a href="/myblog.github.io/2021/03/18/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-18 18:02:38" itemprop="dateCreated datePublished" datetime="2021-03-18T18:02:38+08:00">2021-03-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-03-20 16:26:39" itemprop="dateModified" datetime="2021-03-20T16:26:39+08:00">2021-03-20</time>
+      </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>77</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p> Humans are HOOKED. Machines are LEARNING.</p>
+<p>Go for it! And I will form a good habit from then on.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
+      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
+      <meta itemprop="description" content="越努力越幸运!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加肥猫的学习博客">
+    </span>
+      <header class="post-header">
+	  
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/myblog.github.io/2021/03/18/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-18 18:02:38" itemprop="dateCreated datePublished" datetime="2021-03-18T18:02:38+08:00">2021-03-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-03-20 16:26:39" itemprop="dateModified" datetime="2021-03-20T16:26:39+08:00">2021-03-20</time>
+      </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>77</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p> Humans are HOOKED. Machines are LEARNING.</p>
+<p>Go for it! And I will form a good habit from then on.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E6%95%B0%E6%8D%AE%E5%BA%93mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
+      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
+      <meta itemprop="description" content="越努力越幸运!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加肥猫的学习博客">
+    </span>
+      <header class="post-header">
+	  
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/myblog.github.io/2021/03/18/%E6%95%B0%E6%8D%AE%E5%BA%93mysql/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1135,7 +1074,7 @@
 
 
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/myblog.github.io/page/2/">2</a><a class="page-number" href="/myblog.github.io/page/3/">3</a><a class="extend next" rel="next" href="/myblog.github.io/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/myblog.github.io/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/myblog.github.io/">1</a><span class="page-number current">2</span><a class="page-number" href="/myblog.github.io/page/3/">3</a><a class="extend next" rel="next" href="/myblog.github.io/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 

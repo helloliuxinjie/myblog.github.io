@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/myblog.github.io/function%20()%20%7B%0A%20%20%20%20%20%20for%20(var%20_len2%20=%20arguments.length,%20args%20=%20new%20Array(_len2),%20_key2%20=%200;%20_key2%20%3C%20_len2;%20_key2++)%20%7B%0A%20%20%20%20%20%20%20%20args%5B_key2%5D%20=%20arguments%5B_key2%5D;%0A%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20return%20obj%5Bval%5D.apply(obj,%20args);%0A%20%20%20%20%7D">
+
+<link rel="stylesheet" href="/myblog.github.io/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"helloliuxinjie.github.io","root":"/myblog.github.io/","images":"/myblog.github.io/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/myblog.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="越努力越幸运!">
+<meta property="og:type" content="website">
+<meta property="og:title" content="加肥猫的学习博客">
+<meta property="og:url" content="https://helloliuxinjie.github.io/myblog.github.io/page/3/index.html">
+<meta property="og:site_name" content="加肥猫的学习博客">
+<meta property="og:description" content="越努力越幸运!">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="加菲猫的薛定谔@LXJ">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://helloliuxinjie.github.io/myblog.github.io/page/3/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>加肥猫的学习博客</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/myblog.github.io/atom.xml" title="加肥猫的学习博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/myblog.github.io/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">加肥猫的学习博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录学习和生活中的点点滴滴</p>
+      <img class="custom-logo-image" src="/myblog.github.io/uploads/bg.jpg" alt="加肥猫的学习博客">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/myblog.github.io/" rel="section"><i class="home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/myblog.github.io/about/" rel="section"><i class="user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/myblog.github.io/tags/" rel="section"><i class="tags fa-fw"></i>标签<span class="badge">0</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/myblog.github.io/categories/" rel="section"><i class="th fa-fw"></i>分类<span class="badge">0</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/myblog.github.io/archives/" rel="section"><i class="archive fa-fw"></i>归档<span class="badge">24</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+	
+	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=38019092&auto=1&height=66">
+	</iframe>
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="加菲猫的薛定谔@LXJ"
+      src="/myblog.github.io/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">加菲猫的薛定谔@LXJ</p>
+  <div class="site-description" itemprop="description">越努力越幸运!</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/myblog.github.io/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/helloliuxinjie" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;helloliuxinjie" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/myblog.github.io/484671483@qq.com" title="E-Mail → 484671483@qq.com"><i class="fab fa-email fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/myblog.github.io/liuxinjie533@gmail.com" title="Google → liuxinjie533@gmail.com"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/myblog.github.io/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/myblog.github.io/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/helloliuxinjie" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E7%BC%96%E7%A8%8B%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
+      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
+      <meta itemprop="description" content="越努力越幸运!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加肥猫的学习博客">
+    </span>
+      <header class="post-header">
+	  
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/myblog.github.io/2021/03/18/%E7%BC%96%E7%A8%8B%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">编程小技巧</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-18 18:02:38" itemprop="dateCreated datePublished" datetime="2021-03-18T18:02:38+08:00">2021-03-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-03-21 20:43:01" itemprop="dateModified" datetime="2021-03-21T20:43:01+08:00">2021-03-21</time>
+      </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>782</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="1-可以尝试下载一个-jdk-API-1-8-0中文-帮助文档"><a href="#1-可以尝试下载一个-jdk-API-1-8-0中文-帮助文档" class="headerlink" title="1.可以尝试下载一个 jdk API 1.8.0中文 帮助文档"></a>1.可以尝试下载一个 jdk API 1.8.0中文 帮助文档</h2><h2 id="2-驱动就是一个jar包"><a href="#2-驱动就是一个jar包" class="headerlink" title="2.驱动就是一个jar包"></a>2.驱动就是一个jar包</h2><h2 id="3-Navicat-for-mysql的使用"><a href="#3-Navicat-for-mysql的使用" class="headerlink" title="3.Navicat for mysql的使用"></a>3.Navicat for mysql的使用</h2><h3 id="3-1-建立连接"><a href="#3-1-建立连接" class="headerlink" title="3.1 建立连接"></a>3.1 建立连接</h3><p>启动Navicat for mysql    步骤: 1.任务管理器的服务里面找到mysql80  将服务启动</p>
+<p>mysql的默认端口为3306 建议不要改,  然后连接名, 主机名或者IP地址,用户名root不改, 密码是可以自己更改的</p>
+<p>不过这样会报错, 打开cmd输入以下语句</p>
+<p>mysql -u root -p 登录</p>
+<p>ALTER USER ‘root’@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘533533’;</p>
+<p>FLUSH PRIVILEGES; #刷新权限</p>
+<p>在建立连接就可以了;</p>
+<h3 id="3-2-在连接下面建立数据库"><a href="#3-2-在连接下面建立数据库" class="headerlink" title="3.2 在连接下面建立数据库"></a>3.2 在连接下面建立数据库</h3><ul>
+<li><strong>字符集建议选择 UTF-8 ，如果你数据库里不存汉字可选择其他选项</strong></li>
+<li><strong>排序规则就选择第一个 utf8_general_ci 就可以了</strong></li>
+</ul>
+<p>然后就可以开始增删改查了</p>
+<h3 id="3-3-数据库的远程连接"><a href="#3-3-数据库的远程连接" class="headerlink" title="3.3 数据库的远程连接"></a>3.3 数据库的远程连接</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37321253/article/details/80728844?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~aggregatepage~first_rank_v2~rank_aggregation-1-80728844.pc_agg_rank_aggregation&amp;utm_term=%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%E5%AF%B9%E6%96%B9%E6%95%B0%E6%8D%AE%E5%BA%93&amp;spm=1000.2123.3001.4430">https://blog.csdn.net/qq_37321253/article/details/80728844?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~aggregatepage~first_rank_v2~rank_aggregation-1-80728844.pc_agg_rank_aggregation&amp;utm_term=%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%E5%AF%B9%E6%96%B9%E6%95%B0%E6%8D%AE%E5%BA%93&amp;spm=1000.2123.3001.4430</a></p>
+<h3 id="3-4-在idea中添加jar包-在工程目录下新建lib-将包放在里面-右键lib选择-add-as-Library"><a href="#3-4-在idea中添加jar包-在工程目录下新建lib-将包放在里面-右键lib选择-add-as-Library" class="headerlink" title="3.4 在idea中添加jar包, 在工程目录下新建lib, 将包放在里面, 右键lib选择 add as  Library"></a>3.4 在idea中添加jar包, 在工程目录下新建lib, 将包放在里面, 右键lib选择 add as  Library</h3>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E8%A5%BF%E5%8D%97%E4%BA%A4%E5%A4%A7%E8%80%83%E7%A0%94%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
+      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
+      <meta itemprop="description" content="越努力越幸运!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加肥猫的学习博客">
+    </span>
+      <header class="post-header">
+	  
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/myblog.github.io/2021/03/18/%E8%A5%BF%E5%8D%97%E4%BA%A4%E5%A4%A7%E8%80%83%E7%A0%94%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" class="post-title-link" itemprop="url">西南交大考研信息收录</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-18 18:02:38" itemprop="dateCreated datePublished" datetime="2021-03-18T18:02:38+08:00">2021-03-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-03-21 15:10:19" itemprop="dateModified" datetime="2021-03-21T15:10:19+08:00">2021-03-21</time>
+      </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>841</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>西南交大:现有九里、犀浦、峨眉三个校区，占地5000余亩，犀浦校区为主校区。</strong></p>
+<h2 id="考试科目"><a href="#考试科目" class="headerlink" title="考试科目:"></a>考试科目:</h2><p>(101)思想政治理论</p>
+<p>(201)英语一</p>
+<p>(301)数学一</p>
+<p>(840)数据结构与程序设计   1.《数据结构》(C语言版)严蔚敏，吴伟民编，清华大学出版社2.《C语言程序设计》 宁爱军编，人民邮电出版社 第2版</p>
+<h2 id="研究方向"><a href="#研究方向" class="headerlink" title="研究方向"></a>研究方向</h2><ol>
+<li><p>计算机应用技术</p>
+</li>
+<li><p>计算机软件与理论</p>
+</li>
+<li><p>计算机网络与信息安全</p>
+</li>
+<li><p>产业链协同与信息化支撑技术</p>
+</li>
+<li><p>大数据与云计算技术</p>
+</li>
+<li><p>人工智能与机器学习技术</p>
+</li>
+<li><p>图形图像与视频处理技术</p>
+</li>
+</ol>
+<h2 id="参考书"><a href="#参考书" class="headerlink" title="参考书"></a>参考书</h2><p>数据结构,算法,计算机组成原理,操作系统,计算机网络</p>
+<h2 id="西南交大学硕"><a href="#西南交大学硕" class="headerlink" title="西南交大学硕"></a>西南交大学硕</h2><p>信息科学与技术学院</p>
+<p>计算机科学与技术</p>
+<p>总分345</p>
+<p>科目一37</p>
+<p>科目二37</p>
+<p>科目三56</p>
+<p>科目四56</p>
+<p>西南交通大学信息学院累计报考人数高达6074人，其中专硕高达4992人！总录取人数约200人，高达1比25！</p>
+<p>有46人保研，剩余名额150人左右，还不到25比1</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/362864036">https://www.zhihu.com/question/362864036</a></p>
+<p>西南交大备考攻略</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/270941781">https://zhuanlan.zhihu.com/p/270941781</a></p>
+<p>西南交大计算机在第四轮学科评估中评为B+，计算机实力在西南地区和四川大学、重庆大学属于同一档次。</p>
+<p>学硕计算机+软工考研大概可考名额三十多个，专硕计算机+软工考研大概可考五十多个。学硕考政治、英一、数一、840专业课，专硕考政治、英二、数二、840专业课。学习内容上学硕肯定比专硕多且难，招生也比专硕少，但实际竞争程度上可能比专硕还要低一些，主要是因为想考专硕学生多。</p>
+<p>复试线学硕大概浮动在330-340之间，专硕浮动在340-360之间。</p>
+<p>报录比这块我没去关心，因为大家也清楚各个学校计算机都是大热门，211学校计算机报录比不会低，大致知道就行了，不必细究。</p>
+<h2 id="研究生复试"><a href="#研究生复试" class="headerlink" title="研究生复试"></a>研究生复试</h2><p>１.(英)你有事吗兴趣爱好？</p>
+<p>２．你读过哪些英文文献？</p>
+<p>３．毕设相关</p>
+<p>４.(英)自我介绍：　说说你的家乡，　家乡气候</p>
+<p>５．描述一下快速排序</p>
+<p>６．数组和线性表的区别与联系，　物理结构和逻辑结构具体指事吗？有什么区别，毕设相关</p>
+<p>７.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B8%B8%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
+      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
+      <meta itemprop="description" content="越努力越幸运!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加肥猫的学习博客">
+    </span>
+      <header class="post-header">
+	  
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/myblog.github.io/2021/03/18/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B8%B8%E8%AF%86/" class="post-title-link" itemprop="url">哈哈,啥也不是!</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-18 18:02:38" itemprop="dateCreated datePublished" datetime="2021-03-18T18:02:38+08:00">2021-03-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-03-21 15:15:10" itemprop="dateModified" datetime="2021-03-21T15:15:10+08:00">2021-03-21</time>
+      </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.6k</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h1><p>1.工资算法&gt;后端&gt;客户端&gt;前端&gt;测开&gt;软件测试</p>
+<p>2.字节工资是最高的, 字节官方是22k, 字节的槽点确实是发展太快 流程略显不规范.   并不是身体轻松, 技术轻松    字节对新人能友好些</p>
+<p>3.感觉阿里不太行，听说官僚化有点严重,等级森严</p>
+<p>4.做个需求要同时把前端，后端，测试，运营的leader全部叫上</p>
+<p>5.前后端的leader是一个</p>
+<p>6.腾讯钱有点少 我看了下offershow, 腾讯白菜好像30左右</p>
+<p>7.都是我最喜欢的dfs</p>
+<p>8.研究生要求比较高</p>
+<p>9.阿里不看重笔试</p>
+<p>10.做业务太无聊了，真的，我现在技术越来越烂了，甚至有点不会写代码了</p>
+<p>11.在字节内网, 很简单啊，你搜个字节跳动秋招面试题库</p>
+<p>12.进字节我感觉要么做算法，要么就做抖音，头条的核心业务</p>
+<p>13.归并也是dfs</p>
+<p>14.研发岗位和后端岗位的企业招聘需求: 从工作年限上看, 后端需要3-4的经验, 研发则需要5年及以上; 同时薪资起点不同![-524b6ddf92466a50](D:\Tencent Files\484671483\FileRecv\MobileFile-524b6ddf92466a50.png)</p>
+<p>![22b2629317d1dc02](D:\Tencent Files\484671483\FileRecv\MobileFile\22b2629317d1dc02.png)![-35c803579096913e](D:\Tencent Files\484671483\FileRecv\MobileFile-35c803579096913e.png)</p>
+<p>![3f5b958b747e8f30](D:\Tencent Files\484671483\FileRecv\MobileFile\3f5b958b747e8f30.png)</p>
+<p>15.Java繁琐的不是语言而是生态圈, 生态圈丰富, 太老比如:struts,jsp;  Java最大的劣势就是生态圈太老, 文档太难看</p>
+<p>16.go没有jvm, 更适合微服务,Java的jvm已启动就是200MB, go有函数指针,Java所有的代码都必须写到类里面,灵活性差一点</p>
+<ol start="17">
+<li><p>C++ 不需要新人, 太难了.   </p>
+</li>
+<li><p>Java和C#基本一样</p>
+</li>
+<li><p>redis就是一个带持久化的内存缓存而已, redis重点在部署和性能测试, 现在已经不会单独的使用redis了, 因为单单的redis功能有限, 比如你想用redis限制mysql写入的上限什么的, 都是用的spring cloud这样的分布式框架</p>
+</li>
+<li><p>成都租房子, 单间合租6-800</p>
+</li>
+<li><p>如何看待实验室老师不让学生实习,考编,考公,以及找工作, 必须在实验室搞科研: 回答: 本质上是内卷严重, 学历不值钱, 本科生找不到工作只能继续读研究生, 导致虽然叫研究生, 但学生不想研究只想缓几年再找工作, 这就导致了学生和老师的目标矛盾</p>
+</li>
+<li><p>机器学习 深度学习</p>
+<p>1.魔改结构  2.疯狂调参找出最好的结果 3.瞎编解释说自己的改造是有物理意义的  4.论文到手        论文读多了就会发现, 很多论文的改进点很扯淡, 但是他们都会提供一个看起来提高了效果, 但是你实践会发现他就是挑出了一个最大值</p>
+</li>
+<li><p>核心甚至顶会一般会找同领域的审稿人, 他们会看你论文的创新性和工作量.  稍微改了一点代码发论文的, 但是那种一般情况下人家改了之后效果提示明显, 而且在论文里做了相关理论分析,论述了为什么这样改了之后性能大幅提升</p>
+</li>
+<li><p>炒股公司做AI, 但是目前人工智能是数据驱动范式的, 个人连数据都拿不到, 做了效果肯定也上不去, 凭你算法多牛,都不行.</p>
+</li>
+<li><p>研究生出来和本科没什么区别.</p>
+</li>
+<li><p>要想找工作的话,一个合格的Java程序员必须学会用框架和会看源码, 了解底层原理.具体技能方面, 面试经常会被问到: 1. SpringBoot, spring cloud  2. redis(这个不懂直接pass)  3.消息中间件(三大主流的)  4.数据库的查询优化   5.jvm调优</p>
+</li>
+<li><p>小厂没资源没氛围, 大厂有资源有氛围.</p>
+</li>
+<li><p>面试造汉姆, 工作拧螺丝</p>
+</li>
+</ol>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>1.深圳钱深圳花, 一分也别想带回家.</p>
+<p>2.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
+      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
+      <meta itemprop="description" content="越努力越幸运!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加肥猫的学习博客">
+    </span>
+      <header class="post-header">
+	  
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/myblog.github.io/2021/03/18/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-18 18:02:38" itemprop="dateCreated datePublished" datetime="2021-03-18T18:02:38+08:00">2021-03-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-03-20 16:26:39" itemprop="dateModified" datetime="2021-03-20T16:26:39+08:00">2021-03-20</time>
+      </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>77</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p> Humans are HOOKED. Machines are LEARNING.</p>
+<p>Go for it! And I will form a good habit from then on.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/myblog.github.io/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/myblog.github.io/">1</a><a class="page-number" href="/myblog.github.io/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘鑫杰</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">10k</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/myblog.github.io/js/utils.js"></script><script src="/myblog.github.io/js/motion.js"></script><script src="/myblog.github.io/js/next-boot.js"></script>
+
+  
+<script src="/myblog.github.io/js/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  
+
+<script src="/myblog.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/myblog.github.io/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
+
+

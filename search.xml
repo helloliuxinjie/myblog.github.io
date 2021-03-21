@@ -31,8 +31,281 @@
     
     <entry>
       <title>刘鑫杰博客</title>
+      <link href="/myblog.github.io/2021/03/18/CAS%E5%8E%9F%E7%90%86/"/>
+      <url>/myblog.github.io/2021/03/18/CAS%E5%8E%9F%E7%90%86/</url>
+      
+        <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刘鑫杰博客</title>
+      <link href="/myblog.github.io/2021/03/18/DFS%E5%92%8CBFS%E7%AC%94%E8%AE%B0/"/>
+      <url>/myblog.github.io/2021/03/18/DFS%E5%92%8CBFS%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刘鑫杰博客</title>
       <link href="/myblog.github.io/2021/03/18/Hello-LXJ/"/>
       <url>/myblog.github.io/2021/03/18/Hello-LXJ/</url>
+      
+        <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JDBC(能够对数据库进行增删改查)</title>
+      <link href="/myblog.github.io/2021/03/18/JDBC%E7%AC%94%E8%AE%B0/"/>
+      <url>/myblog.github.io/2021/03/18/JDBC%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Java语言连接数据库-JDBC"><a href="#Java语言连接数据库-JDBC" class="headerlink" title="Java语言连接数据库(JDBC)"></a>Java语言连接数据库(JDBC)</h1><p>笔记连接:<a href="https://blog.csdn.net/qq_43649223/article/details/106755584">https://blog.csdn.net/qq_43649223/article/details/106755584</a></p><p>参考连接:<a href="https://blog.csdn.net/upup1006/article/details/95470945">https://blog.csdn.net/upup1006/article/details/95470945</a></p><h2 id="1-JDBC-Java-database-connectivity"><a href="#1-JDBC-Java-database-connectivity" class="headerlink" title="1.JDBC: Java database connectivity"></a>1.JDBC: Java database connectivity</h2><h2 id="2-jdbc-的本质"><a href="#2-jdbc-的本质" class="headerlink" title="2.jdbc 的本质"></a>2.jdbc 的本质</h2><p>jdbc是sun公司制定的一套<strong>接口</strong>, 接口都有调用者和实现者.  面向接口调用, 面向接口写实现类, 这都属于面向接口编程</p><p>为什么要面向接口编程?  解耦合: 降低程序的耦合度, 提高程序的扩展力. 多态机制就是非常典型的: 面向抽象编程. (不要面向具体编程)</p><h2 id="3-为什么SUN制定一套接口"><a href="#3-为什么SUN制定一套接口" class="headerlink" title="3.为什么SUN制定一套接口?"></a>3.为什么SUN制定一套接口?</h2><p>因为每一个数据库的底层实现原理都不一样. oracle mysql MSserver 数据库都有自己的独特的实现原理</p><p>定义一套接口, 所有数据库厂家的Java程序员都按照这套接口去写实现类.   我们面向jdbc接口编程</p><h2 id="4-驱动"><a href="#4-驱动" class="headerlink" title="4.驱动"></a>4.驱动</h2><p>驱动:所有的数据库驱动都是以jar包的形式存在的,jar 中有很多.class文件, 这些class文件就是对jdbc接口的实现.    驱动都是接口的实现类.</p><p>驱动不是sun公司提供的, 而是各大数据库厂家负责提供,下载驱动jar包, 需要去数据库官网下载.</p><h2 id="5-模拟SUN-数据库厂家-我们角色"><a href="#5-模拟SUN-数据库厂家-我们角色" class="headerlink" title="5.模拟SUN 数据库厂家  我们角色"></a>5.模拟SUN 数据库厂家  我们角色</h2><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import java.util.ResourceBundle;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Java程序员</span></span><br><span class="line"><span class="comment"> * 不需要关系具体是哪个品牌的数据库, 只需要面向jdbc接口写代码</span></span><br><span class="line"><span class="comment"> * 面向接口编程</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">public <span class="keyword">class</span> JavaProgrammer &#123;</span><br><span class="line">    public static void main(String<span class="literal">[]</span> args) throws Exception &#123;</span><br><span class="line"><span class="comment">//        JDBC jdbc=new MySql();</span></span><br><span class="line"><span class="comment">//        JDBC jdbc1=new SqlServer();</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建对象可以通过反射机制</span></span><br><span class="line">        ResourceBundle bundle=<span class="module-access"><span class="module"><span class="identifier">ResourceBundle</span>.</span></span>get<span class="constructor">Bundle(<span class="string">&quot;jdbc&quot;</span>)</span>;</span><br><span class="line">        String className=bundle.get<span class="constructor">String(<span class="string">&quot;className&quot;</span>)</span>;</span><br><span class="line">        Class clazz = <span class="module-access"><span class="module"><span class="identifier">Class</span>.</span></span><span class="keyword">for</span><span class="constructor">Name(<span class="params">className</span>)</span>;</span><br><span class="line">        JDBC jdbc=(JDBC)clazz.<span class="keyword">new</span><span class="constructor">Instance()</span>;</span><br><span class="line">        jdbc.get<span class="constructor">Connection()</span>;</span><br><span class="line"><span class="comment">//        jdbc1.getConnection();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SqlServer</span>  <span class="keyword">implements</span> <span class="title">JDBC</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getConnection</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;连接SqlServer数据库成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">className</span>=MySql</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySql</span> <span class="keyword">implements</span> <span class="title">JDBC</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getConnection</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="comment">//具体这里怎么写, 对于我们来说没有关系</span></span><br><span class="line">            <span class="comment">//这段代码涉及到mysql底层数据库的实现原理</span></span><br><span class="line">            System.out.println(<span class="string">&quot;连接mysql数据库成功&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Sun 公司负责制定的JDBC接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="symbol">JDBC</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 连接数据库的方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">   <span class="built_in">void</span> getConnection();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="6-JDBC开发前的准备工作"><a href="#6-JDBC开发前的准备工作" class="headerlink" title="6.JDBC开发前的准备工作"></a>6.JDBC开发前的准备工作</h2><p>先从官网下载对应的驱动jar包, 然后将其配置到环境变量classpath中</p><p>idea不需要这么配置, idea自动完成</p><h2 id="7-JDBC编程六步的概述-需要背会"><a href="#7-JDBC编程六步的概述-需要背会" class="headerlink" title="7.JDBC编程六步的概述(需要背会)"></a>7.JDBC编程六步的概述(需要背会)</h2><p>1.注册驱动(作用: 告诉Java程序,即将要连接的是哪个品牌的数据库)</p><p>2.获取连接(作用: 表示jvm的进程和数据库之间的通道打开了, 这属于进程之间的通信, 重量级, 使用完之后一定要关闭通道)</p><p>3.获取数据库操作对象(专门执行SQL语句的对象)</p><p>4.执行SQL语句(DQL,DML…)</p><p>5.处理查询结果集(只有当第四步执行的是select语句的时候,才有第五步处理查询的结果集)</p><p>6.释放资源(使用完资源之后一定要关闭资源,Java和数据库属于进程间的通信,开启之后一定要关闭)</p><p>学完jdbc, 下一站学框架</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刘鑫杰博客</title>
+      <link href="/myblog.github.io/2021/03/18/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+      <url>/myblog.github.io/2021/03/18/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刘鑫杰博客</title>
+      <link href="/myblog.github.io/2021/03/18/Mybatis/"/>
+      <url>/myblog.github.io/2021/03/18/Mybatis/</url>
+      
+        <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刘鑫杰博客</title>
+      <link href="/myblog.github.io/2021/03/18/SpringBoot%E7%AC%94%E8%AE%B0/"/>
+      <url>/myblog.github.io/2021/03/18/SpringBoot%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刘鑫杰博客</title>
+      <link href="/myblog.github.io/2021/03/18/hashmap/"/>
+      <url>/myblog.github.io/2021/03/18/hashmap/</url>
+      
+        <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刘鑫杰博客</title>
+      <link href="/myblog.github.io/2021/03/18/redis/"/>
+      <url>/myblog.github.io/2021/03/18/redis/</url>
+      
+        <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刘鑫杰博客</title>
+      <link href="/myblog.github.io/2021/03/18/%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/"/>
+      <url>/myblog.github.io/2021/03/18/%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/</url>
+      
+        <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刘鑫杰博客</title>
+      <link href="/myblog.github.io/2021/03/18/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/"/>
+      <url>/myblog.github.io/2021/03/18/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/</url>
+      
+        <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刘鑫杰博客</title>
+      <link href="/myblog.github.io/2021/03/18/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92(%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98)/"/>
+      <url>/myblog.github.io/2021/03/18/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92(%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98)/</url>
+      
+        <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刘鑫杰博客</title>
+      <link href="/myblog.github.io/2021/03/18/%E5%8F%8D%E5%B0%84%E7%AC%94%E8%AE%B0/"/>
+      <url>/myblog.github.io/2021/03/18/%E5%8F%8D%E5%B0%84%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>大学生发期刊</title>
+      <link href="/myblog.github.io/2021/03/18/%E5%8F%91%E6%9C%9F%E5%88%8A%E6%AD%A5%E9%AA%A4/"/>
+      <url>/myblog.github.io/2021/03/18/%E5%8F%91%E6%9C%9F%E5%88%8A%E6%AD%A5%E9%AA%A4/</url>
+      
+        <content type="html"><![CDATA[<p>第一步：写。你得把论文写出来，这是关键，没有论文是不可能发表的，您说对吧。但是写论文也是有技巧的，简单来说，就是专业知识+一定的技巧。专业知识不用说了，就是平时你学习、生活、工作中积累的知识、素材。技巧就是指选题立意，甚至格式、图表的制作等，都需要一定地技巧。这个只能在平时多学习，靠一时的指点是不行的。</p><p>第二步：投。写完论文后投稿。投稿就有技巧可言了，甚至直接关系到论文是否被录用。这里需要注意几个问题，一是明确需要发表期刊的级别，因为级别越高，越难发表，在中国，期刊按大类可分为普通期刊和核心期刊。但按我们公司十年的经验来看，中国的期刊按发表难易程度可分为下面几类，给钱就发的（以名字不好听的垃圾期刊、假刊为代表），需要审核但基本都能过的（以对外承包的期刊为代表），需要审核但过稿率不太高的（以比较难发的普刊为代表）、过稿率非常低，审核在半月左右的（以高端普刊，例如本科学报为代表）、极难发表的（以核心期刊为代表）。如果本科生来发表，一定要弄清自己为什么要发表，即自己发表的目的。是为了评奖学金？以后保研，还是单纯学术爱好。如果是前两项，我们称之为功利性发表的，那么，非常简单，直接把自己学校的文件找出来，找到符合学校标准的期刊，然后投最好录用的一个，如果学术爱好等，那么就认真选期刊吧。说的比较多了，这一块技巧比较多，可以私信或留言，大家继续交流。</p><p>第三步：录。即投稿被录用。但大家并要注意一个问题，并不是你投稿了就一定能录用，不录用的情况也非常多。如果录用之后并不是就能高枕无忧了，并不是，后期还有修改、排版定稿后的核实、版面费等，有的还要授权书、版权证明书之类的，所以，一定要经常和编辑沟通，争取早日收到杂志。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刘鑫杰博客</title>
+      <link href="/myblog.github.io/2021/03/18/%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E4%B9%8B%E7%B1%BB%E7%9A%84/"/>
+      <url>/myblog.github.io/2021/03/18/%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E4%B9%8B%E7%B1%BB%E7%9A%84/</url>
+      
+        <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刘鑫杰博客</title>
+      <link href="/myblog.github.io/2021/03/18/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+      <url>/myblog.github.io/2021/03/18/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刘鑫杰博客</title>
+      <link href="/myblog.github.io/2021/03/18/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <url>/myblog.github.io/2021/03/18/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刘鑫杰博客</title>
+      <link href="/myblog.github.io/2021/03/18/%E6%95%B0%E6%8D%AE%E5%BA%93mysql/"/>
+      <url>/myblog.github.io/2021/03/18/%E6%95%B0%E6%8D%AE%E5%BA%93mysql/</url>
+      
+        <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>编程小技巧</title>
+      <link href="/myblog.github.io/2021/03/18/%E7%BC%96%E7%A8%8B%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+      <url>/myblog.github.io/2021/03/18/%E7%BC%96%E7%A8%8B%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-可以尝试下载一个-jdk-API-1-8-0中文-帮助文档"><a href="#1-可以尝试下载一个-jdk-API-1-8-0中文-帮助文档" class="headerlink" title="1.可以尝试下载一个 jdk API 1.8.0中文 帮助文档"></a>1.可以尝试下载一个 jdk API 1.8.0中文 帮助文档</h2><h2 id="2-驱动就是一个jar包"><a href="#2-驱动就是一个jar包" class="headerlink" title="2.驱动就是一个jar包"></a>2.驱动就是一个jar包</h2><h2 id="3-Navicat-for-mysql的使用"><a href="#3-Navicat-for-mysql的使用" class="headerlink" title="3.Navicat for mysql的使用"></a>3.Navicat for mysql的使用</h2><h3 id="3-1-建立连接"><a href="#3-1-建立连接" class="headerlink" title="3.1 建立连接"></a>3.1 建立连接</h3><p>启动Navicat for mysql    步骤: 1.任务管理器的服务里面找到mysql80  将服务启动</p><p>mysql的默认端口为3306 建议不要改,  然后连接名, 主机名或者IP地址,用户名root不改, 密码是可以自己更改的</p><p>不过这样会报错, 打开cmd输入以下语句</p><p>mysql -u root -p 登录</p><p>ALTER USER ‘root’@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘533533’;</p><p>FLUSH PRIVILEGES; #刷新权限</p><p>在建立连接就可以了;</p><h3 id="3-2-在连接下面建立数据库"><a href="#3-2-在连接下面建立数据库" class="headerlink" title="3.2 在连接下面建立数据库"></a>3.2 在连接下面建立数据库</h3><ul><li><strong>字符集建议选择 UTF-8 ，如果你数据库里不存汉字可选择其他选项</strong></li><li><strong>排序规则就选择第一个 utf8_general_ci 就可以了</strong></li></ul><p>然后就可以开始增删改查了</p><h3 id="3-3-数据库的远程连接"><a href="#3-3-数据库的远程连接" class="headerlink" title="3.3 数据库的远程连接"></a>3.3 数据库的远程连接</h3><p><a href="https://blog.csdn.net/qq_37321253/article/details/80728844?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~aggregatepage~first_rank_v2~rank_aggregation-1-80728844.pc_agg_rank_aggregation&amp;utm_term=%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%E5%AF%B9%E6%96%B9%E6%95%B0%E6%8D%AE%E5%BA%93&amp;spm=1000.2123.3001.4430">https://blog.csdn.net/qq_37321253/article/details/80728844?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~aggregatepage~first_rank_v2~rank_aggregation-1-80728844.pc_agg_rank_aggregation&amp;utm_term=%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%E5%AF%B9%E6%96%B9%E6%95%B0%E6%8D%AE%E5%BA%93&amp;spm=1000.2123.3001.4430</a></p><h3 id="3-4-在idea中添加jar包-在工程目录下新建lib-将包放在里面-右键lib选择-add-as-Library"><a href="#3-4-在idea中添加jar包-在工程目录下新建lib-将包放在里面-右键lib选择-add-as-Library" class="headerlink" title="3.4 在idea中添加jar包, 在工程目录下新建lib, 将包放在里面, 右键lib选择 add as  Library"></a>3.4 在idea中添加jar包, 在工程目录下新建lib, 将包放在里面, 右键lib选择 add as  Library</h3>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>西南交大考研信息收录</title>
+      <link href="/myblog.github.io/2021/03/18/%E8%A5%BF%E5%8D%97%E4%BA%A4%E5%A4%A7%E8%80%83%E7%A0%94%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"/>
+      <url>/myblog.github.io/2021/03/18/%E8%A5%BF%E5%8D%97%E4%BA%A4%E5%A4%A7%E8%80%83%E7%A0%94%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</url>
+      
+        <content type="html"><![CDATA[<p><strong>西南交大:现有九里、犀浦、峨眉三个校区，占地5000余亩，犀浦校区为主校区。</strong></p><h2 id="考试科目"><a href="#考试科目" class="headerlink" title="考试科目:"></a>考试科目:</h2><p>(101)思想政治理论</p><p>(201)英语一</p><p>(301)数学一</p><p>(840)数据结构与程序设计   1.《数据结构》(C语言版)严蔚敏，吴伟民编，清华大学出版社2.《C语言程序设计》 宁爱军编，人民邮电出版社 第2版</p><h2 id="研究方向"><a href="#研究方向" class="headerlink" title="研究方向"></a>研究方向</h2><ol><li><p>计算机应用技术</p></li><li><p>计算机软件与理论</p></li><li><p>计算机网络与信息安全</p></li><li><p>产业链协同与信息化支撑技术</p></li><li><p>大数据与云计算技术</p></li><li><p>人工智能与机器学习技术</p></li><li><p>图形图像与视频处理技术</p></li></ol><h2 id="参考书"><a href="#参考书" class="headerlink" title="参考书"></a>参考书</h2><p>数据结构,算法,计算机组成原理,操作系统,计算机网络</p><h2 id="西南交大学硕"><a href="#西南交大学硕" class="headerlink" title="西南交大学硕"></a>西南交大学硕</h2><p>信息科学与技术学院</p><p>计算机科学与技术</p><p>总分345</p><p>科目一37</p><p>科目二37</p><p>科目三56</p><p>科目四56</p><p>西南交通大学信息学院累计报考人数高达6074人，其中专硕高达4992人！总录取人数约200人，高达1比25！</p><p>有46人保研，剩余名额150人左右，还不到25比1</p><p><a href="https://www.zhihu.com/question/362864036">https://www.zhihu.com/question/362864036</a></p><p>西南交大备考攻略</p><p><a href="https://zhuanlan.zhihu.com/p/270941781">https://zhuanlan.zhihu.com/p/270941781</a></p><p>西南交大计算机在第四轮学科评估中评为B+，计算机实力在西南地区和四川大学、重庆大学属于同一档次。</p><p>学硕计算机+软工考研大概可考名额三十多个，专硕计算机+软工考研大概可考五十多个。学硕考政治、英一、数一、840专业课，专硕考政治、英二、数二、840专业课。学习内容上学硕肯定比专硕多且难，招生也比专硕少，但实际竞争程度上可能比专硕还要低一些，主要是因为想考专硕学生多。</p><p>复试线学硕大概浮动在330-340之间，专硕浮动在340-360之间。</p><p>报录比这块我没去关心，因为大家也清楚各个学校计算机都是大热门，211学校计算机报录比不会低，大致知道就行了，不必细究。</p><h2 id="研究生复试"><a href="#研究生复试" class="headerlink" title="研究生复试"></a>研究生复试</h2><p>１.(英)你有事吗兴趣爱好？</p><p>２．你读过哪些英文文献？</p><p>３．毕设相关</p><p>４.(英)自我介绍：　说说你的家乡，　家乡气候</p><p>５．描述一下快速排序</p><p>６．数组和线性表的区别与联系，　物理结构和逻辑结构具体指事吗？有什么区别，毕设相关</p><p>７.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>哈哈,啥也不是!</title>
+      <link href="/myblog.github.io/2021/03/18/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B8%B8%E8%AF%86/"/>
+      <url>/myblog.github.io/2021/03/18/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B8%B8%E8%AF%86/</url>
+      
+        <content type="html"><![CDATA[<h1 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h1><p>1.工资算法&gt;后端&gt;客户端&gt;前端&gt;测开&gt;软件测试</p><p>2.字节工资是最高的, 字节官方是22k, 字节的槽点确实是发展太快 流程略显不规范.   并不是身体轻松, 技术轻松    字节对新人能友好些</p><p>3.感觉阿里不太行，听说官僚化有点严重,等级森严</p><p>4.做个需求要同时把前端，后端，测试，运营的leader全部叫上</p><p>5.前后端的leader是一个</p><p>6.腾讯钱有点少 我看了下offershow, 腾讯白菜好像30左右</p><p>7.都是我最喜欢的dfs</p><p>8.研究生要求比较高</p><p>9.阿里不看重笔试</p><p>10.做业务太无聊了，真的，我现在技术越来越烂了，甚至有点不会写代码了</p><p>11.在字节内网, 很简单啊，你搜个字节跳动秋招面试题库</p><p>12.进字节我感觉要么做算法，要么就做抖音，头条的核心业务</p><p>13.归并也是dfs</p><p>14.研发岗位和后端岗位的企业招聘需求: 从工作年限上看, 后端需要3-4的经验, 研发则需要5年及以上; 同时薪资起点不同![-524b6ddf92466a50](D:\Tencent Files\484671483\FileRecv\MobileFile-524b6ddf92466a50.png)</p><p>![22b2629317d1dc02](D:\Tencent Files\484671483\FileRecv\MobileFile\22b2629317d1dc02.png)![-35c803579096913e](D:\Tencent Files\484671483\FileRecv\MobileFile-35c803579096913e.png)</p><p>![3f5b958b747e8f30](D:\Tencent Files\484671483\FileRecv\MobileFile\3f5b958b747e8f30.png)</p><p>15.Java繁琐的不是语言而是生态圈, 生态圈丰富, 太老比如:struts,jsp;  Java最大的劣势就是生态圈太老, 文档太难看</p><p>16.go没有jvm, 更适合微服务,Java的jvm已启动就是200MB, go有函数指针,Java所有的代码都必须写到类里面,灵活性差一点</p><ol start="17"><li><p>C++ 不需要新人, 太难了.   </p></li><li><p>Java和C#基本一样</p></li><li><p>redis就是一个带持久化的内存缓存而已, redis重点在部署和性能测试, 现在已经不会单独的使用redis了, 因为单单的redis功能有限, 比如你想用redis限制mysql写入的上限什么的, 都是用的spring cloud这样的分布式框架</p></li><li><p>成都租房子, 单间合租6-800</p></li><li><p>如何看待实验室老师不让学生实习,考编,考公,以及找工作, 必须在实验室搞科研: 回答: 本质上是内卷严重, 学历不值钱, 本科生找不到工作只能继续读研究生, 导致虽然叫研究生, 但学生不想研究只想缓几年再找工作, 这就导致了学生和老师的目标矛盾</p></li><li><p>机器学习 深度学习</p><p>1.魔改结构  2.疯狂调参找出最好的结果 3.瞎编解释说自己的改造是有物理意义的  4.论文到手        论文读多了就会发现, 很多论文的改进点很扯淡, 但是他们都会提供一个看起来提高了效果, 但是你实践会发现他就是挑出了一个最大值</p></li><li><p>核心甚至顶会一般会找同领域的审稿人, 他们会看你论文的创新性和工作量.  稍微改了一点代码发论文的, 但是那种一般情况下人家改了之后效果提示明显, 而且在论文里做了相关理论分析,论述了为什么这样改了之后性能大幅提升</p></li><li><p>炒股公司做AI, 但是目前人工智能是数据驱动范式的, 个人连数据都拿不到, 做了效果肯定也上不去, 凭你算法多牛,都不行.</p></li><li><p>研究生出来和本科没什么区别.</p></li><li><p>要想找工作的话,一个合格的Java程序员必须学会用框架和会看源码, 了解底层原理.具体技能方面, 面试经常会被问到: 1. SpringBoot, spring cloud  2. redis(这个不懂直接pass)  3.消息中间件(三大主流的)  4.数据库的查询优化   5.jvm调优</p></li><li><p>小厂没资源没氛围, 大厂有资源有氛围.</p></li><li><p>面试造汉姆, 工作拧螺丝</p></li></ol><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>1.深圳钱深圳花, 一分也别想带回家.</p><p>2.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刘鑫杰博客</title>
+      <link href="/myblog.github.io/2021/03/18/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/"/>
+      <url>/myblog.github.io/2021/03/18/%E9%9D%A2%E7%BB%8F%E5%87%86%E5%A4%87/</url>
       
         <content type="html"><![CDATA[<p> Humans are HOOKED. Machines are LEARNING.</p><p>Go for it! And I will form a good habit from then on.</p>]]></content>
       
