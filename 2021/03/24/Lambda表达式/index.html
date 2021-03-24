@@ -20,30 +20,32 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"helloliuxinjie.github.io","root":"/myblog.github.io/","images":"/myblog.github.io/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/myblog.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="越努力越幸运!">
-<meta property="og:type" content="website">
+<meta name="description" content="Lambda表达式一、Lambda表达式简介什么是Lambda？Lambda是JAVA 8添加的新特性，说白了，Lambda是一个匿名函数 为什么使用Lambda使用Lambda表达式可以对一个接口的方法进行非常简洁的实现 Lambda对接口的要求虽然可以使用Lambda表达式对某些接口进行简单的实现，但是并不是所有的接口都可以用Lambda表达式来实现，要求接口中定义的必须要实现的抽象方法只能是">
+<meta property="og:type" content="article">
 <meta property="og:title" content="加肥猫的学习博客">
-<meta property="og:url" content="https://helloliuxinjie.github.io/myblog.github.io/index.html">
+<meta property="og:url" content="https://helloliuxinjie.github.io/myblog.github.io/2021/03/24/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
 <meta property="og:site_name" content="加肥猫的学习博客">
-<meta property="og:description" content="越努力越幸运!">
+<meta property="og:description" content="Lambda表达式一、Lambda表达式简介什么是Lambda？Lambda是JAVA 8添加的新特性，说白了，Lambda是一个匿名函数 为什么使用Lambda使用Lambda表达式可以对一个接口的方法进行非常简洁的实现 Lambda对接口的要求虽然可以使用Lambda表达式对某些接口进行简单的实现，但是并不是所有的接口都可以用Lambda表达式来实现，要求接口中定义的必须要实现的抽象方法只能是">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-24T04:04:27.016Z">
+<meta property="article:modified_time" content="2021-03-24T04:05:54.161Z">
 <meta property="article:author" content="加菲猫的薛定谔@LXJ">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://helloliuxinjie.github.io/myblog.github.io/">
+<link rel="canonical" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/24/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
-<title>加肥猫的学习博客</title>
+<title> | 加肥猫的学习博客</title>
   
 
 
@@ -174,7 +176,7 @@
 	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=38019092&auto=1&height=66">
 	</iframe>
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -187,6 +189,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-text">Lambda表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AE%80%E4%BB%8B"><span class="nav-text">一、Lambda表达式简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFLambda%EF%BC%9F"><span class="nav-text">什么是Lambda？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8Lambda"><span class="nav-text">为什么使用Lambda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda%E5%AF%B9%E6%8E%A5%E5%8F%A3%E7%9A%84%E8%A6%81%E6%B1%82"><span class="nav-text">Lambda对接口的要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FunctionalInterface"><span class="nav-text">@FunctionalInterface</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Lambda%E7%9A%84%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="nav-text">二、Lambda的基础语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%AF%AD%E6%B3%95"><span class="nav-text">1.语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E5%A4%9A%E4%B8%AA%E6%8E%A5%E5%8F%A3"><span class="nav-text">2.创建多个接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%88%9B%E5%BB%BA%E6%B5%8B%E8%AF%95%E7%B1%BB"><span class="nav-text">3.创建测试类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%AF%AD%E6%B3%95%E7%B2%BE%E7%AE%80"><span class="nav-text">三、语法精简</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B%E7%B2%BE%E7%AE%80"><span class="nav-text">1.参数类型精简</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%8F%82%E6%95%B0%E5%B0%8F%E6%8B%AC%E5%8F%B7%E7%B2%BE%E7%AE%80"><span class="nav-text">2.参数小括号精简</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%96%B9%E6%B3%95%E5%A4%A7%E6%8B%AC%E5%8F%B7%E7%B2%BE%E7%AE%80"><span class="nav-text">3.方法大括号精简</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%A4%A7%E6%8B%AC%E5%8F%B7%E7%B2%BE%E7%AE%80%E8%A1%A5%E5%85%85"><span class="nav-text">4.大括号精简补充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%A4%9A%E5%8F%82%E6%95%B0%EF%BC%8C%E6%9C%89%E8%BF%94%E5%9B%9E%E5%80%BC-%E7%B2%BE%E7%AE%80"><span class="nav-text">5.多参数，有返回值 精简</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81Lambda%E8%AF%AD%E6%B3%95%E8%BF%9B%E9%98%B6"><span class="nav-text">四、Lambda语法进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8-%E6%99%AE%E9%80%9A%E6%96%B9%E6%B3%95%E4%B8%8E%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-text">1.方法引用(普通方法与静态方法)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="nav-text">语法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%EF%BC%9A"><span class="nav-text">例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%BB%BC%E5%90%88%E7%BB%83%E4%B9%A0"><span class="nav-text">五、综合练习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%9B%86%E5%90%88%E6%8E%92%E5%BA%8F%E6%A1%88%E4%BE%8B"><span class="nav-text">1.集合排序案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Treeset%E6%8E%92%E5%BA%8F%E6%A1%88%E4%BE%8B"><span class="nav-text">2.Treeset排序案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%9B%86%E5%90%88%E7%9A%84%E9%81%8D%E5%8E%86"><span class="nav-text">3.集合的遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%88%A0%E9%99%A4%E9%9B%86%E5%90%88%E4%B8%AD%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0"><span class="nav-text">4.删除集合中满足条件的元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%BC%80%E8%BE%9F%E4%B8%80%E6%9D%A1%E7%BA%BF%E7%A8%8B-%E5%81%9A%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97%E7%9A%84%E8%BE%93%E5%87%BA"><span class="nav-text">5.开辟一条线程 做一个数字的输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E7%B3%BB%E7%BB%9F%E5%86%85%E7%BD%AE%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3"><span class="nav-text">六、系统内置的函数式接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81Lambda%E9%97%AD%E5%8C%85"><span class="nav-text">七、Lambda闭包</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -250,16 +253,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/24/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -273,9 +277,9 @@
     </span>
       <header class="post-header">
 	  
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/24/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -290,6 +294,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
       </div>
       <div class="post-meta">
     <span class="post-meta-item" title="本文字数">
@@ -308,7 +319,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h1><h2 id="一、Lambda表达式简介"><a href="#一、Lambda表达式简介" class="headerlink" title="一、Lambda表达式简介"></a>一、Lambda表达式简介</h2><h3 id="什么是Lambda？"><a href="#什么是Lambda？" class="headerlink" title="什么是Lambda？"></a>什么是Lambda？</h3><p>Lambda是JAVA 8添加的新特性，说白了，Lambda是一个匿名函数</p>
+        <h1 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h1><h2 id="一、Lambda表达式简介"><a href="#一、Lambda表达式简介" class="headerlink" title="一、Lambda表达式简介"></a>一、Lambda表达式简介</h2><h3 id="什么是Lambda？"><a href="#什么是Lambda？" class="headerlink" title="什么是Lambda？"></a>什么是Lambda？</h3><p>Lambda是JAVA 8添加的新特性，说白了，Lambda是一个匿名函数</p>
 <h3 id="为什么使用Lambda"><a href="#为什么使用Lambda" class="headerlink" title="为什么使用Lambda"></a>为什么使用Lambda</h3><p>使用Lambda表达式可以对一个接口的方法进行非常简洁的实现</p>
 <h3 id="Lambda对接口的要求"><a href="#Lambda对接口的要求" class="headerlink" title="Lambda对接口的要求"></a>Lambda对接口的要求</h3><p>虽然可以使用Lambda表达式对某些接口进行简单的实现，但是并不是所有的接口都可以用Lambda表达式来实现，要求接口中定义的<strong>必须要实现的抽象方法只能是一个</strong></p>
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在JAVA8中 ，对接口加了一个新特性：<span class="keyword">default</span></span><br><span class="line">可以使用<span class="keyword">default</span>对接口方法进行修饰，被修饰的方法在接口中可以默认实现</span><br></pre></td></tr></table></figure>
@@ -392,7 +403,6 @@
 <h2 id="七、Lambda闭包"><a href="#七、Lambda闭包" class="headerlink" title="七、Lambda闭包"></a>七、Lambda闭包</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.alan.closure;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.function.Supplier;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Alan</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2020-05-27 16:59</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClosureDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * lambda的闭包会提升包围变量的生命周期</span></span><br><span class="line"><span class="comment">         * 所以局部变量 num在getNumber()方法内被 get()引用 不会在getNumber()方法执行后销毁</span></span><br><span class="line"><span class="comment">         * 这种方法可以在外部获取到某一个方法的局部变量</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">int</span> n=getNumber().get();</span><br><span class="line">        System.out.println(n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Supplier&lt;Integer&gt; <span class="title">getNumber</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num=<span class="number">10</span>;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * Supplier supplier=()-&gt;num;</span></span><br><span class="line"><span class="comment">         * return supplier;</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">return</span> ()-&gt;&#123;</span><br><span class="line">            <span class="keyword">return</span> num;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">*************************************************************************</span><br><span class="line">    </span><br><span class="line"><span class="keyword">package</span> com.alan.closure;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.function.Consumer;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Alan</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2020-05-27 17:20</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClosureDemo2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a=<span class="number">10</span>;</span><br><span class="line">        Consumer&lt;Integer&gt; c=ele-&gt;&#123;</span><br><span class="line">            System.out.println(a+<span class="number">1</span>);</span><br><span class="line">            <span class="comment">//System.out.println(ele);</span></span><br><span class="line">            <span class="comment">//System.out.println(a++); 会报错</span></span><br><span class="line">            <span class="comment">//在lambda中引用局部变量 这个变量必须是一个常量</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">//a++; 这样也会导致内部报错</span></span><br><span class="line">        <span class="comment">//如果在内部已经引用局部变量 参数传递后 打印的还是 10</span></span><br><span class="line">        c.accept(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
 
     
@@ -400,103 +410,52 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>加菲猫的薛定谔@LXJ
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/24/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="">https://helloliuxinjie.github.io/myblog.github.io/2021/03/24/Lambda表达式/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
 </div>
 
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
 
+  <div class="social-list">
 
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/myblog.github.io/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/20/VAE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
-      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
-      <meta itemprop="description" content="越努力越幸运!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="加肥猫的学习博客">
-    </span>
-      <header class="post-header">
-	  
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/20/VAE/" class="post-title-link" itemprop="url">变分自动编码器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-20 16:42:38 / 修改时间：16:27:34" itemprop="dateCreated datePublished" datetime="2021-03-20T16:42:38+08:00">2021-03-20</time>
-    </span>
-
-  
+          <span class="label">RSS</span>
+        </a>
       </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.1k</span>
-    </span>
+  </div>
 </div>
 
-        </div>
-      </header>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="基于VAE的Mnist手写体图像生成笔记"><a href="#基于VAE的Mnist手写体图像生成笔记" class="headerlink" title="基于VAE的Mnist手写体图像生成笔记"></a>基于VAE的Mnist手写体图像生成笔记</h1><h2 id="1-判别模型与生成模型"><a href="#1-判别模型与生成模型" class="headerlink" title="1.判别模型与生成模型"></a>1.判别模型与生成模型</h2><p>在传统机器学习模型一般分为两类</p>
-<h3 id="1-1-判别模型"><a href="#1-1-判别模型" class="headerlink" title="1.1 判别模型"></a>1.1 判别模型</h3><p>给定数据x, 比如一张图像.  标签y, 比如猫或者狗.   判别模型只在建模给定x后,对标签y的条件概率分布.  根据条件概率大小进行分类. 它可以用于各种分类任务.</p>
-<p>判别任务具有更为直接和广泛的应用.</p>
-<h3 id="1-2-生成模型"><a href="#1-2-生成模型" class="headerlink" title="1.2 生成模型"></a>1.2 生成模型</h3><p>通常假设数据x的产生, 服从一个有隐变量z控制的一个隐藏生成过程.  进而去建模数据x与隐变量z的联合概率分布.  从而根据z的先验分布p(z)–&gt;以及给定z后x的生成分布p(x|z), 对x进行采样, 生成新的数据样本.</p>
-<p>生成模型更具趣味性, 因为他可以生成之前并不存在的样本. 它可以揭示数据背后的隐藏结构,从而展现机器的一个想象力, 拓宽人类的视野.</p>
-<h2 id="2-基于深度学习的生成模型"><a href="#2-基于深度学习的生成模型" class="headerlink" title="2. 基于深度学习的生成模型"></a>2. 基于深度学习的生成模型</h2><p>随着深度学习的发展, 深度生成模型成为了当下的热点. 如今主流的生成模型主要分为两类: 生成对抗网络(GAN)和变分自编码器(VAE)</p>
-<h3 id="2-1-生成对抗网络-GAN"><a href="#2-1-生成对抗网络-GAN" class="headerlink" title="2.1 生成对抗网络(GAN)"></a>2.1 生成对抗网络(GAN)</h3><p>生成网络与判别网络最小-最大化博弈, 从而在迭代的过程中, 生成网络可以骗过判别网络, 生成高质量的原始数据.   由于GAN基于博弈论的数学原理极为有趣, 它吸引了大量的研究.  由于它只能从隐变量的先验分布p(z)中随机采样生成新样本.  而不能表达给定x之后, 隐变量z的后验概率分布, 因此在应用中具有局限性.</p>
-<h3 id="2-2-变分自编码器-VAE"><a href="#2-2-变分自编码器-VAE" class="headerlink" title="2.2 变分自编码器(VAE)"></a>2.2 变分自编码器(VAE)</h3><p>利用解码网络自下而上建模生成过程, 也就是给定z后, x的条件概率分布p(x|z)</p>
-<p>利用编码网络自下而上的推理过程, 即给定x后的, z的后验概率</p>
-<p>因此VAE的语义空间具有更加明显的语义结构, 它同时具有生成和推理的过程.  因此VAE在多项任务,比如说计算机视觉, 自然语言处理, 推荐系统方面具有广泛的应用.</p>
-<h2 id="3-变分自编码器-VAE"><a href="#3-变分自编码器-VAE" class="headerlink" title="3.变分自编码器(VAE)"></a>3.变分自编码器(VAE)</h2><h3 id="3-1-生成过程-给定某一个z-利用其生成数据x"><a href="#3-1-生成过程-给定某一个z-利用其生成数据x" class="headerlink" title="3.1 生成过程(给定某一个z, 利用其生成数据x)"></a>3.1 生成过程(给定某一个z, 利用其生成数据x)</h3><p>假设隐变量z的先验p(z), 在没有给定任何数据的时候, 服从一个标准的正态分布.   现在假定给定z后, x服从条件概率分布p(x|z), 即可以由一个深度神经网络解码器(一个DNN)来表示, 该网络以theta作为其可训练权重, 以z作为输入.          当x是连续的实变量时, 我们可以假设它服从高斯分布, 从而将网络未加任何激活函数的原始输出作为高斯分布的均值.         当x是一个离散变量的时候, 我们可以假设它服从二元或者多元伯努利分布, 这时对网络的输出进行sigmoid或者softmax函数进行归一化, 可以作为该分布对应类别的概率.</p>
-<h3 id="3-2推理过程-即给定某一个x-z的后验概率分布"><a href="#3-2推理过程-即给定某一个x-z的后验概率分布" class="headerlink" title="3.2推理过程(即给定某一个x, z的后验概率分布)"></a>3.2推理过程(即给定某一个x, z的后验概率分布)</h3><p>在给定上述隐变量z的先验概率p(z)以及数据x的生成概率p(x|z)之后, 给定一个样本x,对齐隐变量的推理P(z|x), 需要知道z的后验概率分布p(z|x),  而根据贝叶斯定理, 计算z的后验概率分布需要 x的边缘概率p(x)即归一化常数.    但是p(x)=fp(z)p(x|z)dz中的生成条件概率p(x|z)是由深度神经网络表示的, 是非线性的, 没有显式解, 因此, 该后验概率不可解!</p>
-<h3 id="3-3-变分近似后验"><a href="#3-3-变分近似后验" class="headerlink" title="3.3 变分近似后验"></a>3.3 变分近似后验</h3><p>为了解决上述后验概率不可解的问题.  VAE假设存在一个q(z|x), 这里的权重参数为Ψ, 即编码器网络, 去近似不可解的后验.   VAE旨在从q(Ψ)中找到一个与上面的真实但不可解的后验概率分布p(这里参数为θ)的KL散度最小的一个分布, 作为它的一个近似.</p>
-<h3 id="3-4-优化目标-最小化qΨ-z-x-与pθ-z-x-之间的KL散度"><a href="#3-4-优化目标-最小化qΨ-z-x-与pθ-z-x-之间的KL散度" class="headerlink" title="3.4 优化目标: 最小化qΨ(z|x)与pθ(z|x)之间的KL散度"></a>3.4 优化目标: 最小化qΨ(z|x)与pθ(z|x)之间的KL散度</h3><p>根据式1, 由于x的边缘分布p(x)中不含有隐变量z, 所以它是一个常数, 显然它不可解.    最小化KL散度等价于最大化后面这个式子L即式2, 因为KL散度是大于0的量, 所以L属于边缘分布对数的一个下界</p>
-<p>根据式2即L表达式,  它由两个项组成, 其一是生成x概率的对数似然的期望,对其进行最大化,可以使得z能解释出现的数据x,从而约束隐空间的语义结构       其二是z的先验概率分布p(z)与z的后验概率分布的KL散度, 该项使得后验尽可能的去接近先验, 它作为正则化项控制编码器模型的复杂度.</p>
-<h3 id="3-5-本文使用的网络结构"><a href="#3-5-本文使用的网络结构" class="headerlink" title="3.5 本文使用的网络结构"></a>3.5 本文使用的网络结构</h3><p>x是图像,  因此编码器网络首先采用卷积神经网络对图像进行特征提取, 同时在卷积层之间采用p归一化, 防止发生均值漂移,并且减轻过拟合的影响.  最后我们将后一个卷积层输出的特征图谱展开为一维,经过一个全连接层后, 分别用两个全连接层去预测隐变量的均值和方差.  为了使梯度能够正常的传递,VAE采用了重参数化技巧(即给定隐变量z的均值和标准差,我们首先从标准正态分布采到一个样本 ε,然后z=μ+σ*ε 作为z的样本进行前向传播).        在解码器中, 给定隐变量z的一个样本之后,通过全连接层将它映射到编码器最后一个卷积层输出特征图谱, 展开成为一维后的大小, 并将其reshape, 使其具有对应的空间维度, 接着解码器采用了一个解卷积层, 将特征图谱的空间分辨率提升到原来的大小. 最后解码器采用了以sigmoid为激活函数的卷积层还原得到原始数据x’</p>
-<h1 id="VAE-另一项目"><a href="#VAE-另一项目" class="headerlink" title="VAE 另一项目"></a>VAE 另一项目</h1><p><a target="_blank" rel="noopener" href="https://kexue.fm/archives/5253">gitee</a></p>
-<p><a target="_blank" rel="noopener" href="https://gitee.com/cao_yu_fei/vae_keras?_from=gitee_search#https://kexue.fm/archives/5253">vae_keras</a></p>
-<h1 id="VAE-基于pytorch的项目"><a href="#VAE-基于pytorch的项目" class="headerlink" title="VAE 基于pytorch的项目"></a>VAE 基于pytorch的项目</h1><p><a target="_blank" rel="noopener" href="https://gitee.com/xubinlee/VAE-CVAE-MNIST?_from=gitee_search">VAE-CVAE-MNIST</a></p>
-<p><a target="_blank" rel="noopener" href="https://gitee.com/piglittle/multi-level-vae?_from=gitee_search">multi-level-vae</a></p>
-<p><a target="_blank" rel="noopener" href="https://gitee.com/asdxyz1234/VAE?_from=gitee_search#https://github.com/AntixK/PyTorch-VAE/blob/master/models/vanilla_vae.py">有比较的全的vae源码</a></p>
+        
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/myblog.github.io/2021/03/20/VAE/" rel="prev" title="变分自动编码器">
+                  <i class="fa fa-chevron-left"></i> 变分自动编码器
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
@@ -504,719 +463,7 @@
 
 
 
-    
 
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/19/pytorch/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
-      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
-      <meta itemprop="description" content="越努力越幸运!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="加肥猫的学习博客">
-    </span>
-      <header class="post-header">
-	  
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/19/pytorch/" class="post-title-link" itemprop="url">深度学习框架pytorch学习笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-19 21:02:38" itemprop="dateCreated datePublished" datetime="2021-03-19T21:02:38+08:00">2021-03-19</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-20 16:27:12" itemprop="dateModified" datetime="2021-03-20T16:27:12+08:00">2021-03-20</time>
-      </span>
-
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Pytorch"><a href="#Pytorch" class="headerlink" title="Pytorch"></a>Pytorch</h1><h2 id="p1-人工神经网络与生物神经网络"><a href="#p1-人工神经网络与生物神经网络" class="headerlink" title="p1.人工神经网络与生物神经网络"></a>p1.人工神经网络与生物神经网络</h2><p>1.生物神经网络:数以万计的神经连接, 900亿的神经细胞组成了我们复杂的神经系统</p>
-<p>2.记忆的形成: 生成了新的突触, 记忆就产生了.  但是形成的新连接怎么形成记忆仍然是科学界的一个迷.</p>
-<p>3.人工神经网络: 比如Google的搜索引擎,股票价格预测,集成学习,家庭助手,围棋alphago</p>
-<p>4.已经成体系的人工神经网络, 神经元之间的连接都是固定不可更换的. 也就是说在人工神经网络里没有凭空产生新连接这回事.  它靠的是正向和反向传播来更新神经元, 从而形成一个更好的神经系统. 本质上这是一个可以处理优化的数学模型. 而生物神经网络是信号刺激产生新的连接, 让信号能够通过新的连接形成反馈.</p>
-<h2 id="p2-什么是神经网络"><a href="#p2-什么是神经网络" class="headerlink" title="p2.什么是神经网络"></a>p2.什么是神经网络</h2><p>1.能够在外界的信息的基础上改变内部的结构. 是一种自适应的过程.</p>
-<p>2.神经网络是一种运算模型</p>
-<h2 id="p3-神经网络-梯度下降"><a href="#p3-神经网络-梯度下降" class="headerlink" title="p3.神经网络:梯度下降"></a>p3.神经网络:梯度下降</h2><p>1.optimization优化问题: 它是人类历史上的重大突破, 它解决了很多生活中的问题</p>
-<p>2.类别: Newton’s method      Least Squares method      Gradient Descent</p>
-<h2 id="p4-神经网络的黑盒不黑-深度理解"><a href="#p4-神经网络的黑盒不黑-深度理解" class="headerlink" title="p4.神经网络的黑盒不黑(深度理解)"></a>p4.神经网络的黑盒不黑(深度理解)</h2><p>输入–&gt;加工–&gt;输出</p>
-<p>加工的过程就是黑盒: 输入端,中间,输出端</p>
-<p>每一层可以看成向量的线性变换或者非线性变换</p>
-<p>黑盒加工处理: 将一种代表特征转换为另一种代表特征, 即一次次的特征转换, 一次次的更有深度的理解.   这里可以理解为把输入信息矩阵化,通过提取特征值或者做SVD之类的变换得到新的特征矩阵</p>
-<p>称为黑盒的原因: 代表特征太多了, 人类无法看明白, 但是计算机可以看明白他们所学到的规律.</p>
-<h2 id="p5-1-1-why使用pytorch"><a href="#p5-1-1-why使用pytorch" class="headerlink" title="p5 1.1 why使用pytorch"></a>p5 1.1 why使用pytorch</h2><p>pytorch是torch在python上衍生.  因为torch是一个使用Lua语言的神经网络库, torch很好用, 但是Lua又不是很流行,所以开发团队将Lua的Torch移植到更流行的语言python上.</p>
-<p>pytorch是17年初才公开的模块.  tensorflow的一些概念静态图或者搭建流程图概念不是很理解.   但是使用pytorch更能诠释神经网络的工作流程, 性能和tensorflow差不多.</p>
-<p>和tensorflow(静态模型)的区别: pytorch在搭建图的时候, 它不是先建好一个静态的流程图,然后在把数据放到流程图里面计算.   它是边输入数据边搭建图, 它是一个动态的过程.</p>
-<h2 id="p6-1-2-安装"><a href="#p6-1-2-安装" class="headerlink" title="p6 1.2 安装"></a>p6 1.2 安装</h2><p>安装的时候安装了两个东西: 1.一个是pytorch的主模块  2.torchvision它是有一个数据库(图片), 有些训练好的网络</p>
-<h2 id="p7-2-1-numpy和torch对比"><a href="#p7-2-1-numpy和torch对比" class="headerlink" title="p7 2.1 numpy和torch对比"></a>p7 2.1 numpy和torch对比</h2><p>numpy: 处理数据的模块, 处理矩阵, 使用你的多核来加速运算.  把array放在CPU中加速运算</p>
-<p>Torch自称为神经网络界的Numpy, 因为它能将torch产生的tensor放在GPU中加速运算.</p>
-<p>tensor是一个张量</p>
-<h2 id="p8-2-2-variable变量"><a href="#p8-2-2-variable变量" class="headerlink" title="p8 2.2 variable变量"></a>p8 2.2 variable变量</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/Android%E7%AC%AC%E4%B8%89%E4%BD%9C%E4%B8%9A%E4%BF%AE%E6%94%B9%E7%9A%84%E5%9C%B0%E6%96%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
-      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
-      <meta itemprop="description" content="越努力越幸运!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="加肥猫的学习博客">
-    </span>
-      <header class="post-header">
-	  
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/18/Android%E7%AC%AC%E4%B8%89%E4%BD%9C%E4%B8%9A%E4%BF%AE%E6%94%B9%E7%9A%84%E5%9C%B0%E6%96%B9/" class="post-title-link" itemprop="url">Android作业修改</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-18 18:02:38" itemprop="dateCreated datePublished" datetime="2021-03-18T18:02:38+08:00">2021-03-18</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-23 13:31:20" itemprop="dateModified" datetime="2021-03-23T13:31:20+08:00">2021-03-23</time>
-      </span>
-
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>4.7k</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p> 参考链接:<br><strong>简单的网络请求工具的封装</strong></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mu_ma_/article/details/106788500">https://blog.csdn.net/mu_ma_/article/details/106788500</a></p>
-<p> <strong>了解JsonObject和JsonArray这两个类</strong></p>
-<p>Json解析器大致逻辑是没有什么问题的,  就如果我要解析一种含有数组的Json数据，就可能不太行了, 类转换成Json数据也是，忽略了数组.   如果是考虑到添加格式不方便的话，可以考虑用JsonObject和JsonArray这两个类。</p>
-<p>代码参考:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> reflection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> net.sf.json.JSONArray;</span><br><span class="line"><span class="keyword">import</span> net.sf.json.JSONObject;</span><br><span class="line"><span class="keyword">import</span> net.sf.json.JsonConfig;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationTargetException;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *create by：sothoth</span></span><br><span class="line"><span class="comment"> *JsonUtil</span></span><br><span class="line"><span class="comment"> *2021.3.7</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsonUtil</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//存储八种基础数据类型和字符串类型</span></span><br><span class="line">    <span class="keyword">private</span>  Class baseElem[]=<span class="keyword">new</span> Class[]&#123;Byte.class,Short.class,Integer.class,Long.class,</span><br><span class="line">            Float.class, Double.class,Character.class,Boolean.class,String.class&#125;;</span><br><span class="line">    <span class="keyword">private</span>  Class baseType[]=<span class="keyword">new</span> Class[]&#123;Byte.TYPE,Short.TYPE,Integer.TYPE,Long.TYPE,</span><br><span class="line">            Float.TYPE, Double.TYPE,Character.TYPE,Boolean.TYPE,String.class&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将一个类转换成JSON数据</span></span><br><span class="line">    <span class="comment">//主要处理我们自己写的类</span></span><br><span class="line">    <span class="keyword">public</span> &lt;T&gt; <span class="function">String <span class="title">beanToJson</span><span class="params">(T bean)</span> <span class="keyword">throws</span> NoSuchMethodException</span>&#123;</span><br><span class="line">        <span class="comment">//Json初始化</span></span><br><span class="line">         JSONObject json=<span class="keyword">new</span> JSONObject();</span><br><span class="line">         Class clazz=bean.getClass();</span><br><span class="line">         <span class="keyword">if</span>(isBaseElem(clazz) || bean <span class="keyword">instanceof</span> List || clazz.isArray())&#123;</span><br><span class="line">             <span class="keyword">return</span> beanToJson(<span class="string">&quot;bean&quot;</span>,bean);</span><br><span class="line">         &#125;</span><br><span class="line">         objectToJson(bean, json);</span><br><span class="line">         <span class="keyword">return</span> json.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将一个类转换成JSON数据</span></span><br><span class="line">    <span class="comment">//主要处理Integer、List子类等情况</span></span><br><span class="line">    <span class="keyword">public</span> &lt;T&gt; <span class="function">String <span class="title">beanToJson</span><span class="params">(String beanName,T bean)</span> <span class="keyword">throws</span> NoSuchMethodException </span>&#123;</span><br><span class="line">        JSONObject json=<span class="keyword">new</span> JSONObject();</span><br><span class="line">        Class clazz=bean.getClass();</span><br><span class="line">        <span class="keyword">if</span>(isBaseElem(clazz))&#123;</span><br><span class="line">            json.accumulate(beanName,bean);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(bean <span class="keyword">instanceof</span> List || clazz.isArray())&#123;</span><br><span class="line">            listToJson(beanName,bean,json);</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            objectToJson(bean,json);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> json.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">jsonToBean</span><span class="params">(T bean,String data)</span> <span class="keyword">throws</span> NoSuchMethodException </span>&#123;</span><br><span class="line">        JSONObject json=JSONObject.fromObject(data);</span><br><span class="line">        Class clazz=bean.getClass();</span><br><span class="line">        Set&lt;Map.Entry&gt; set=json.entrySet();</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry m: set)&#123;</span><br><span class="line">            String fieldName=m.getKey().toString();</span><br><span class="line">            String methodName=<span class="string">&quot;set&quot;</span>+fieldName.substring(<span class="number">0</span>,<span class="number">1</span>).toUpperCase()</span><br><span class="line">                    +fieldName.substring(<span class="number">1</span>); <span class="comment">//获得方法名</span></span><br><span class="line">            Object o=m.getValue();</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> index=-<span class="number">1</span>;</span><br><span class="line">                index=getBaseType(o.getClass());</span><br><span class="line">                <span class="keyword">if</span> (index!=-<span class="number">1</span>) &#123;</span><br><span class="line">                    System.out.println(methodName+<span class="string">&quot; &quot;</span>+o.getClass());</span><br><span class="line">                    Method method=clazz.getDeclaredMethod(methodName,baseType[index]);</span><br><span class="line">                    method.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">                    method.invoke(bean,o);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (o <span class="keyword">instanceof</span> JSONObject) &#123;</span><br><span class="line">                    jsonToBean(o,((JSONObject) o).toString());</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (o <span class="keyword">instanceof</span> JSONArray) &#123;</span><br><span class="line">                    JSONArray jsonArray=JSONArray.fromObject(o);</span><br><span class="line">                    jsonToList(jsonArray.get(<span class="number">0</span>),jsonArray.toString());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        函数作用：将一个类转换成JSON数据格式</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">objectToJson</span><span class="params">(T t,JSONObject json)</span> <span class="keyword">throws</span> NoSuchMethodException</span>&#123;</span><br><span class="line">        Class&lt;?&gt; c = t.getClass();</span><br><span class="line">        Field[] fields = c.getDeclaredFields();</span><br><span class="line">        Method method;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Field field : fields) &#123;</span><br><span class="line">            field.setAccessible(<span class="keyword">true</span>); <span class="comment">//私有属性</span></span><br><span class="line">            String fieldName=field.getName();</span><br><span class="line">            String methodName=<span class="string">&quot;get&quot;</span>+fieldName.substring(<span class="number">0</span>,<span class="number">1</span>).toUpperCase()</span><br><span class="line">                    +fieldName.substring(<span class="number">1</span>); <span class="comment">//获得方法名</span></span><br><span class="line">            method=c.getDeclaredMethod(methodName); <span class="comment">//得到方法</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                   通过方法反射得到属性，当然你也可以通过filed.get(t)来获得</span></span><br><span class="line"><span class="comment">                   为什么要获得属性呢？因为filed.getClass()得到的是Filed类，所以要获得属性</span></span><br><span class="line"><span class="comment">                   这里我只能想到通过Object进行下转，有更好想法可以进行额外尝试</span></span><br><span class="line"><span class="comment">                 */</span></span><br><span class="line">                method.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">                Object elem=method.invoke(t);</span><br><span class="line">                <span class="keyword">if</span> (isBaseElem(elem.getClass())) &#123; <span class="comment">//如果这是基本类或字符串</span></span><br><span class="line">                    json.accumulate(fieldName,elem);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (elem <span class="keyword">instanceof</span> List || elem.getClass().isArray()) &#123; <span class="comment">//如果这是表或者数组</span></span><br><span class="line">                    listToJson(fieldName, elem, json);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="comment">/*</span></span><br><span class="line"><span class="comment">                         如果这是一个实体类，我们就进行递归调用。比如一个Classroom类中</span></span><br><span class="line"><span class="comment">                         有成员是Student类，我们就需要进一步解析Student类中的成员。</span></span><br><span class="line"><span class="comment">                     */</span></span><br><span class="line">                    objectToJson(elem,json);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>  &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">listToJson</span><span class="params">(String paramName,T t,JSONObject json)</span></span>&#123;</span><br><span class="line">        JSONArray jsonArray=JSONArray.fromObject(t);</span><br><span class="line">        json.accumulate(paramName,jsonArray);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>  &lt;T&gt; <span class="function">List <span class="title">jsonToList</span><span class="params">(T t,String data)</span></span>&#123;</span><br><span class="line">        JSONArray jsonArray=JSONArray.fromObject(data);</span><br><span class="line">        List&lt;T&gt; list= JSONArray.toList(jsonArray,t,<span class="keyword">new</span> JsonConfig());</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isBaseElem</span><span class="params">(Class clazz)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(Class elem:baseElem)&#123;</span><br><span class="line">            <span class="keyword">if</span>(elem==clazz)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getBaseType</span><span class="params">(Class clazz)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> index=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(Class elem:baseElem)&#123;</span><br><span class="line">            <span class="keyword">if</span>(elem==clazz)&#123;</span><br><span class="line">                <span class="keyword">return</span> index;</span><br><span class="line">            &#125;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/Hello-LXJ/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
-      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
-      <meta itemprop="description" content="越努力越幸运!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="加肥猫的学习博客">
-    </span>
-      <header class="post-header">
-	  
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/18/Hello-LXJ/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-18 18:02:38" itemprop="dateCreated datePublished" datetime="2021-03-18T18:02:38+08:00">2021-03-18</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-20 16:26:39" itemprop="dateModified" datetime="2021-03-20T16:26:39+08:00">2021-03-20</time>
-      </span>
-
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>77</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p> Humans are HOOKED. Machines are LEARNING.</p>
-<p>Go for it! And I will form a good habit from then on.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/CAS%E5%8E%9F%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
-      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
-      <meta itemprop="description" content="越努力越幸运!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="加肥猫的学习博客">
-    </span>
-      <header class="post-header">
-	  
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/18/CAS%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-18 18:02:38" itemprop="dateCreated datePublished" datetime="2021-03-18T18:02:38+08:00">2021-03-18</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-20 16:26:39" itemprop="dateModified" datetime="2021-03-20T16:26:39+08:00">2021-03-20</time>
-      </span>
-
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>77</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p> Humans are HOOKED. Machines are LEARNING.</p>
-<p>Go for it! And I will form a good habit from then on.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/DFS%E5%92%8CBFS%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
-      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
-      <meta itemprop="description" content="越努力越幸运!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="加肥猫的学习博客">
-    </span>
-      <header class="post-header">
-	  
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/18/DFS%E5%92%8CBFS%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-18 18:02:38" itemprop="dateCreated datePublished" datetime="2021-03-18T18:02:38+08:00">2021-03-18</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-20 16:26:39" itemprop="dateModified" datetime="2021-03-20T16:26:39+08:00">2021-03-20</time>
-      </span>
-
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>77</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p> Humans are HOOKED. Machines are LEARNING.</p>
-<p>Go for it! And I will form a good habit from then on.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/JDBC%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
-      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
-      <meta itemprop="description" content="越努力越幸运!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="加肥猫的学习博客">
-    </span>
-      <header class="post-header">
-	  
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/18/JDBC%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">JDBC(能够对数据库进行增删改查)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-18 18:02:38" itemprop="dateCreated datePublished" datetime="2021-03-18T18:02:38+08:00">2021-03-18</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-21 21:52:04" itemprop="dateModified" datetime="2021-03-21T21:52:04+08:00">2021-03-21</time>
-      </span>
-
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.8k</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Java语言连接数据库-JDBC"><a href="#Java语言连接数据库-JDBC" class="headerlink" title="Java语言连接数据库(JDBC)"></a>Java语言连接数据库(JDBC)</h1><p>笔记连接:<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43649223/article/details/106755584">https://blog.csdn.net/qq_43649223/article/details/106755584</a></p>
-<p>参考连接:<a target="_blank" rel="noopener" href="https://blog.csdn.net/upup1006/article/details/95470945">https://blog.csdn.net/upup1006/article/details/95470945</a></p>
-<h2 id="1-JDBC-Java-database-connectivity"><a href="#1-JDBC-Java-database-connectivity" class="headerlink" title="1.JDBC: Java database connectivity"></a>1.JDBC: Java database connectivity</h2><h2 id="2-jdbc-的本质"><a href="#2-jdbc-的本质" class="headerlink" title="2.jdbc 的本质"></a>2.jdbc 的本质</h2><p>jdbc是sun公司制定的一套<strong>接口</strong>, 接口都有调用者和实现者.  面向接口调用, 面向接口写实现类, 这都属于面向接口编程</p>
-<p>为什么要面向接口编程?  解耦合: 降低程序的耦合度, 提高程序的扩展力. 多态机制就是非常典型的: 面向抽象编程. (不要面向具体编程)</p>
-<h2 id="3-为什么SUN制定一套接口"><a href="#3-为什么SUN制定一套接口" class="headerlink" title="3.为什么SUN制定一套接口?"></a>3.为什么SUN制定一套接口?</h2><p>因为每一个数据库的底层实现原理都不一样. oracle mysql MSserver 数据库都有自己的独特的实现原理</p>
-<p>定义一套接口, 所有数据库厂家的Java程序员都按照这套接口去写实现类.   我们面向jdbc接口编程</p>
-<h2 id="4-驱动"><a href="#4-驱动" class="headerlink" title="4.驱动"></a>4.驱动</h2><p>驱动:所有的数据库驱动都是以jar包的形式存在的,jar 中有很多.class文件, 这些class文件就是对jdbc接口的实现.    驱动都是接口的实现类.</p>
-<p>驱动不是sun公司提供的, 而是各大数据库厂家负责提供,下载驱动jar包, 需要去数据库官网下载.</p>
-<h2 id="5-模拟SUN-数据库厂家-我们角色"><a href="#5-模拟SUN-数据库厂家-我们角色" class="headerlink" title="5.模拟SUN 数据库厂家  我们角色"></a>5.模拟SUN 数据库厂家  我们角色</h2><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import java.util.ResourceBundle;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Java程序员</span></span><br><span class="line"><span class="comment"> * 不需要关系具体是哪个品牌的数据库, 只需要面向jdbc接口写代码</span></span><br><span class="line"><span class="comment"> * 面向接口编程</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">public <span class="keyword">class</span> JavaProgrammer &#123;</span><br><span class="line">    public static void main(String<span class="literal">[]</span> args) throws Exception &#123;</span><br><span class="line"><span class="comment">//        JDBC jdbc=new MySql();</span></span><br><span class="line"><span class="comment">//        JDBC jdbc1=new SqlServer();</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建对象可以通过反射机制</span></span><br><span class="line">        ResourceBundle bundle=<span class="module-access"><span class="module"><span class="identifier">ResourceBundle</span>.</span></span>get<span class="constructor">Bundle(<span class="string">&quot;jdbc&quot;</span>)</span>;</span><br><span class="line">        String className=bundle.get<span class="constructor">String(<span class="string">&quot;className&quot;</span>)</span>;</span><br><span class="line">        Class clazz = <span class="module-access"><span class="module"><span class="identifier">Class</span>.</span></span><span class="keyword">for</span><span class="constructor">Name(<span class="params">className</span>)</span>;</span><br><span class="line">        JDBC jdbc=(JDBC)clazz.<span class="keyword">new</span><span class="constructor">Instance()</span>;</span><br><span class="line">        jdbc.get<span class="constructor">Connection()</span>;</span><br><span class="line"><span class="comment">//        jdbc1.getConnection();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SqlServer</span>  <span class="keyword">implements</span> <span class="title">JDBC</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getConnection</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;连接SqlServer数据库成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">className</span>=MySql</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySql</span> <span class="keyword">implements</span> <span class="title">JDBC</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getConnection</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="comment">//具体这里怎么写, 对于我们来说没有关系</span></span><br><span class="line">            <span class="comment">//这段代码涉及到mysql底层数据库的实现原理</span></span><br><span class="line">            System.out.println(<span class="string">&quot;连接mysql数据库成功&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Sun 公司负责制定的JDBC接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="symbol">JDBC</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 连接数据库的方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">   <span class="built_in">void</span> getConnection();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="6-JDBC开发前的准备工作"><a href="#6-JDBC开发前的准备工作" class="headerlink" title="6.JDBC开发前的准备工作"></a>6.JDBC开发前的准备工作</h2><p>先从官网下载对应的驱动jar包, 然后将其配置到环境变量classpath中</p>
-<p>idea不需要这么配置, idea自动完成</p>
-<h2 id="7-JDBC编程六步的概述-需要背会"><a href="#7-JDBC编程六步的概述-需要背会" class="headerlink" title="7.JDBC编程六步的概述(需要背会)"></a>7.JDBC编程六步的概述(需要背会)</h2><p>1.注册驱动(作用: 告诉Java程序,即将要连接的是哪个品牌的数据库)</p>
-<p>2.获取连接(作用: 表示jvm的进程和数据库之间的通道打开了, 这属于进程之间的通信, 重量级, 使用完之后一定要关闭通道)</p>
-<p>3.获取数据库操作对象(专门执行SQL语句的对象)</p>
-<p>4.执行SQL语句(DQL,DML…)</p>
-<p>5.处理查询结果集(只有当第四步执行的是select语句的时候,才有第五步处理查询的结果集)</p>
-<p>6.释放资源(使用完资源之后一定要关闭资源,Java和数据库属于进程间的通信,开启之后一定要关闭)</p>
-<p>学完jdbc, 下一站学框架</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
-      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
-      <meta itemprop="description" content="越努力越幸运!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="加肥猫的学习博客">
-    </span>
-      <header class="post-header">
-	  
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/18/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-18 18:02:38" itemprop="dateCreated datePublished" datetime="2021-03-18T18:02:38+08:00">2021-03-18</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-20 16:26:39" itemprop="dateModified" datetime="2021-03-20T16:26:39+08:00">2021-03-20</time>
-      </span>
-
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>77</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p> Humans are HOOKED. Machines are LEARNING.</p>
-<p>Go for it! And I will form a good habit from then on.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://helloliuxinjie.github.io/myblog.github.io/2021/03/18/SpringBoot%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/myblog.github.io/uploads/avatar.jpg">
-      <meta itemprop="name" content="加菲猫的薛定谔@LXJ">
-      <meta itemprop="description" content="越努力越幸运!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="加肥猫的学习博客">
-    </span>
-      <header class="post-header">
-	  
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/myblog.github.io/2021/03/18/SpringBoot%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">刘鑫杰博客</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-18 18:02:38" itemprop="dateCreated datePublished" datetime="2021-03-18T18:02:38+08:00">2021-03-18</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-20 16:26:39" itemprop="dateModified" datetime="2021-03-20T16:26:39+08:00">2021-03-20</time>
-      </span>
-
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>77</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p> Humans are HOOKED. Machines are LEARNING.</p>
-<p>Go for it! And I will form a good habit from then on.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/myblog.github.io/page/2/">2</a><a class="page-number" href="/myblog.github.io/page/3/">3</a><a class="extend next" rel="next" href="/myblog.github.io/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 <script>
